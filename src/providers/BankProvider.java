@@ -31,4 +31,16 @@ public class BankProvider extends APIProvider{
 //        reader.close();
         return balance;
     }
+
+    public boolean verifyAccountNumber(String accountNumber) throws IOException {
+        boolean found = false;
+        String fileSeparator = System.getProperty("file.separator");
+        String filename = this.getName().replaceAll("\\s", "") + ".txt";
+        String path = System.getProperty("user.dir") + fileSeparator + filename;
+        System.out.println(path);
+        File file = new File(path);
+      // TODO: verify account number exists in the bank
+        return found;
+        }
+
 }
