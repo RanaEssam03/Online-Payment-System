@@ -1,19 +1,10 @@
 package services;
 
 public class BankServices extends TransactionServices {
-    @Override
-    void transfer() {
-        System.out.println("Transfer using bank services");
+
+
+    public void transferToBankAccount(int amount, String accountNumber){
+        System.out.println("Transfer to bank account using bank services " + apiProvider.getName());
     }
 
-    @Override
-    double inquire() {
-        System.out.println("Inquire using bank services");
-        return 0;
-    }
-
-    @Override
-    void payBills() {
-        System.out.println("Pay bills using bank services");
-    }
 }

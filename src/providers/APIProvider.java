@@ -8,6 +8,8 @@ public abstract class APIProvider { //We don't need the api string
     APIProvider(String name){
         this.name = name;
     }
+    private String providerAPI;
+
     public String getName() {
         return name;
     }
@@ -26,6 +28,5 @@ public abstract class APIProvider { //We don't need the api string
         this.providerAPI = providerAPI;
     }
 
-    private String providerAPI;
     public abstract double verifyAccount(String mobileNumber) throws IOException;
 }
