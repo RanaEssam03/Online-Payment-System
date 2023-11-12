@@ -2,20 +2,25 @@ package models;
 
 import java.util.List;
 
-public abstract class  Account {
+public class Account {
     private String name;
     private String mobile;
+    String email;
     private String password;
     private double balance;
-    private List<Integer> history;
+    private List<String> history;
+
 
     // Constructor
-    public Account(String name, String mobile, String password, double balance, List<Integer> history) {
+    public Account(String name, String mobile, String password, double balance) {
         this.name = name;
         this.mobile = mobile;
         this.password = password;
         this.balance = balance;
-        this.history = history;
+    }
+
+    public Account() {
+
     }
 
     // Getter for name
@@ -26,6 +31,10 @@ public abstract class  Account {
     // Setter for name
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     // Getter for mobile
@@ -58,13 +67,4 @@ public abstract class  Account {
         this.balance = balance;
     }
 
-    // Getter for history
-    public List<Integer> getHistory() {
-        return history;
-    }
-
-    // Setter for history
-    public void setHistory(List<Integer> history) {
-        this.history = history;
-    }
 }
