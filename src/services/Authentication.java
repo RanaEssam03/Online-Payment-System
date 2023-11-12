@@ -41,8 +41,8 @@ public class Authentication {
     public Account getLoggedInAccount() {
         return loggedInAccount;
     }
-    public boolean verifyOtp(String code ){
-
-    }
+//    public boolean verifyOtp(String code ){
+//
+//    }
 }
 
