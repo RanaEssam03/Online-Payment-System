@@ -1,5 +1,15 @@
 package models;
 
-public class BankAccount extends Account{
-    String bankName; // needed to make transaction with the bank's name
+import java.util.List;
+
+public class BankAccount extends Account {
+    int AccountNumber;
+    String bankName;
+    public BankAccount(){
+        super();
+    }
+
+    public BankAccount(String name, String mobile, String password, double balance) {
+        super(name, mobile, password, balance);
+    }
 }
