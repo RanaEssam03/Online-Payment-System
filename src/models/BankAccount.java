@@ -2,11 +2,29 @@ package models;
 
 import java.util.List;
 
+
 public class BankAccount extends Account {
+
     int AccountNumber;
     String bankName;
+    BankType bankType;
 
-    public BankAccount(String name, String mobile, String email, String password, double balance) {
-        super(name, mobile, email, password, balance);
+    enum BankType {
+        Saving,
+        Checking,
     }
+
+    public BankType getBankType() {
+        return bankType;
+    }
+    public void setBankType(BankType bankType) {
+        this.bankType =bankType;
+    }
+
+    public BankAccount(String name, String mobile, BankType bankType, String password, double balance) {
+        super(name, mobile, password, balance);
+        this.bankType = bankType;
+    }
+
+
 }

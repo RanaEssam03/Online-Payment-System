@@ -5,19 +5,17 @@ import java.util.List;
 public class Account {
     private String name;
     private String mobile;
-    String email;
     private String password;
     private double balance;
     private List<String> history;
 
 
     // Constructor
-    public Account(String name, String mobile,String email, String password, double balance) {
+    public Account(String name, String mobile, String password, double balance) {
         this.name = name;
         this.mobile = mobile;
         this.password = password;
         this.balance = balance;
-        this.email=email;
     }
 
     public Account() {
@@ -34,9 +32,7 @@ public class Account {
         this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
 
     // Getter for mobile
     public String getMobile() {

@@ -12,10 +12,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Create dummy accounts and add them to the authentication system
-        Account account1 = new Account("Rana", "rana@gmail.com", "01146993561", "1234", 1000.0);
+        Account account1 = new Account("Rana", "01146993561", "1234", 1000.0);
         authentication.addAccount(account1);
 
-        Account account2 = new Account("Nour", "nour@gmail.com", "01126134834", "5678", 500.0);
+        Account account2 = new Account("Nour", "01126134834", "5678", 500.0);
         authentication.addAccount(account2);
         while (true) {
             // Prompt the user to choose between login, logout, or exit

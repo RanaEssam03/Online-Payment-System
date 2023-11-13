@@ -1,11 +1,25 @@
 package models;
 
-import java.util.List;
-
 public class WalletAccount extends Account {
     String walletName;
+    WalletType walletType; // Use the enum
 
-    public WalletAccount(String name, String mobile, String email, String password, double balance) {
-        super(name, mobile, email, password, balance);
+    public enum WalletType {
+        EtisaleteCash,
+        VodafoneCash,
+        CIB,
     }
+    public WalletType getWalletType() {
+        return walletType;
+    }
+
+    public void setWalletType(WalletType walletType) {
+        this.walletType = walletType;
+    }
+    public WalletAccount(String name, String mobile, WalletType walletType, String password, double balance) {
+        super(name, mobile, password, balance);
+        this.walletType = walletType;
+    }
+
+
 }
