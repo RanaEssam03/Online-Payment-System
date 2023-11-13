@@ -17,6 +17,8 @@ public class Data {
     public static Map<String, Double> EtisalatCashAccounts = new HashMap<>();
     public static Map<String, Double> VodafoneCashAccounts = new HashMap<>();
 
+    public static Map<String, Map<String, String[]>> banksMap = new HashMap<String, Map<String, String[]>>();
+
     public static void setCurrentAccounts(){
         String userName, mobile, email, password;
         String accountNumber;
@@ -58,6 +60,10 @@ public class Data {
         walletAccounts.add(account3);
         NationalBankAccounts.put("01007429819", new String[]{"128", "7000", "Checking"});
         EtisalatCashAccounts.put("01007104077", 6000.0);
+
+        banksMap.put("CIB", CIBAccounts);
+        banksMap.put("National Bank of Egypt", NationalBankAccounts);
+        banksMap.put("HSBC", HSBCAccounts);
     }
 
 }

@@ -39,16 +39,16 @@ public class BankAccount extends Account {
     }
 
     public BankAccountType getBankType() {
-        return bankType;
+        return accountType;
     }
 
     public void setBankType(BankAccountType bankType) {
-        this.bankType = bankType;
+        this.accountType = bankType;
     }
 
-    public BankAccount(String name, String mobile, BankAccountType bankType, String password, double balance) {
-        super(name, mobile, password, balance);
-        this.bankType = bankType;
+    public BankAccount(String name, String mobile, BankAccountType bankType, String password, double balance, String email) {
+        super(name, mobile, password, balance, email);
+        this.accountType = bankType;
     }
 
 
