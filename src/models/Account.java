@@ -6,32 +6,43 @@ public class Account {
     private String name;
     private String mobile;
     String email;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    private String userName;
     private String password;
     private double balance;
     private List<String> history;
 
 
     // Constructor
-    public Account(String name, String mobile, String password, double balance) {
-        this.name = name;
+    public Account(String userName, String mobile, String password, double balance, String email) {
+        this.userName = userName;
         this.mobile = mobile;
         this.password = password;
         this.balance = balance;
+        this.email = email;
     }
 
     public Account() {
 
     }
 
-    // Getter for name
-    public String getName() {
-        return name;
-    }
+//    // Getter for name
+//    public String getName() {
+//        return name;
+//    }
 
     // Setter for name
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     public void setEmail(String email) {
         this.email = email;
