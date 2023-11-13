@@ -1,10 +1,17 @@
-package providers;
+package providers.BillPayment;
 
-import models.Bill;
-import models.WaterBill;
+import models.Bills.Bill;
+import models.Bills.WaterBill;
+import models.ConnectionAPI;
+
+
 import java.util.Random;
 
-public class WaterCompany extends BillCompany{
+public class WaterCompany extends BillCompany {
+
+    public WaterCompany() {
+        super(new ConnectionAPI("Water_Company"));
+    }
     public Bill getBill(/*Integer customerID*/) {
         // TODO : customerID problem
         Random random = new Random();
@@ -17,6 +24,7 @@ public class WaterCompany extends BillCompany{
 
     public boolean confirmPayment() {
         // TODO : how to confirm payment if i dont have access to the account of the customer
-        return false;
+        System.out.println("Water bill payment confirmed");
+        return true;
     }
 }

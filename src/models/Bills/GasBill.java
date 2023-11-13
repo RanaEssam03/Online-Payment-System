@@ -1,8 +1,6 @@
-package models;
+package models.Bills;
 
-import java.util.Random;
-
-public class GasBill extends Bill{
+public class GasBill extends Bill {
     Integer gasMeterReading;
     Integer usedAmount;
     static Integer billNumber = 0;

@@ -1,6 +1,6 @@
-package models;
+package models.Bills;
 
-public class WaterBill extends Bill{
+public class WaterBill extends Bill {
     static Integer billNumber = 0;
     Double usedAmount;
     Double unitPrice;

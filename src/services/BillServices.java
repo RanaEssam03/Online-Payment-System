@@ -1,29 +1,32 @@
 package services;
 
-import models.Bill;
-import providers.BillCompany;
-import providers.ElectricityCompany;
-import providers.GasCompany;
-import providers.WaterCompany;
+import models.Account;
+import models.Bills.Bill;
+import providers.BillPayment.BillCompany;
+import providers.BillPayment.ElectricityCompany;
+import providers.BillPayment.GasCompany;
+import providers.Transaction.TransactionProvider;
+import providers.BillPayment.WaterCompany;
+
 import java.util.Objects;
 import java.util.Scanner;
 
-public abstract class BillServices {
+public  class BillServices {
     BillCompany billCompany;
-    // TODO : transaction provider
+    TransactionProvider transactionProvider;
+
+    public BillServices(BillCompany billCompany, TransactionProvider transactionProvider) {
+        this.billCompany = billCompany;
+        this.transactionProvider = transactionProvider;
+    }
+
     public Bill inquire(){
-        Scanner in = new Scanner(System.in);
-        String billType = in.nextLine();
-        if (Objects.equals(billType, "Gas"))
-            billCompany = new GasCompany();
-        else if (Objects.equals(billType, "Water"))
-            billCompany = new WaterCompany();
-        else if (Objects.equals(billType, "Electricity"))
-            billCompany = new ElectricityCompany();
         return billCompany.getBill();
     }
-    public boolean pay(Bill bill){
-        // TODO : i cannot pay if i can't check the account balance to firstly confirm it's a valid payment
-        return true;
+    public boolean pay(Bill bill, Account currentAccount){
+       if(transactionProvider.withdraw(bill.getBillAmount(), currentAccount))
+           return billCompany.confirmPayment();
+
+        return false;
     }
 }

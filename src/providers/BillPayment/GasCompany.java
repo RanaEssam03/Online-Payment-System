@@ -1,10 +1,16 @@
-package providers;
+package providers.BillPayment;
 
-import models.Bill;
-import models.GasBill;
+import models.Bills.Bill;
+import models.Bills.GasBill;
+import models.ConnectionAPI;
+
+
 import java.util.Random;
 
-public class GasCompany extends BillCompany{
+public class GasCompany extends BillCompany {
+    public GasCompany() {
+        super(new ConnectionAPI("Gas_Company"));
+    }
     public Bill getBill(/*Integer customerID*/) {
         // TODO : customerID problem
         Random random = new Random();
@@ -16,7 +22,9 @@ public class GasCompany extends BillCompany{
     }
 
     public boolean confirmPayment() {
+        // TODO:could be concrete method in BillCompany??
         // TODO : how to confirm payment if i dont have access to the account of the customer
-        return false;
+        System.out.println("Gas bill payment confirmed using " + connectionAPI.getApiURL());
+        return true;
     }
 }

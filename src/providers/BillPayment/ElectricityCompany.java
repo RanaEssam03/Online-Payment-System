@@ -1,12 +1,18 @@
-package providers;
+package providers.BillPayment;
 
-import models.Bill;
-import models.ElectricityBill;
+import models.Bills.Bill;
+import models.Bills.ElectricityBill;
+import models.ConnectionAPI;
+import providers.BillPayment.BillCompany;
+
 import java.util.Random;
 
-public class ElectricityCompany extends BillCompany{
+public class ElectricityCompany extends BillCompany {
+    public ElectricityCompany() {
+        super(new ConnectionAPI("Electricity_Company"));
+    }
     public Bill getBill(/*Integer customerID*/) {
-        // TODO : customerID problem
+
         Random random = new Random();
         Double billAmount = random.nextDouble(100);
         Double unitPrice = random.nextDouble(1000);
@@ -16,7 +22,7 @@ public class ElectricityCompany extends BillCompany{
     }
 
     public boolean confirmPayment() {
-        // TODO : how to confirm payment if i dont have access to the account of the customer
-        return false;
+        System.out.println("Electricity bill payment confirmed");
+        return true;
     }
 }

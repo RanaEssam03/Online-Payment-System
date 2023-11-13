@@ -1,8 +1,6 @@
-package models;
+package models.Bills;
 
-import java.time.LocalDate;
-
-public class ElectricityBill extends Bill{
+public class ElectricityBill extends Bill {
     static Integer billNumber = 0;
     Double unitPrice;
     Double usedAmount;
