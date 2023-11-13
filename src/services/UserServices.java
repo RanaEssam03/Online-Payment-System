@@ -1,7 +1,6 @@
 package services;
 
 import models.Account;
-import providers.APIProvider;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -14,8 +13,9 @@ public class UserServices {
                 .matcher(emailAddress)
                 .matches();
     }
-    public  boolean register(Account account, String mobileNumber, APIProvider provider) throws IOException {
-        double balance = provider.verifyAccount(mobileNumber);
+    public  boolean register(Account account, String mobileNumber) throws IOException {
+//        double balance = provider.verifyAccount(mobileNumber);
+       double balance = 5;
         if(balance == -1){
             return false;
         }

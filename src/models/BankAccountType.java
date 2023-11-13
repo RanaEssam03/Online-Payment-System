@@ -1,2 +1,6 @@
-package models;public enum BankAccountType {
+package models;
+
+enum BankAccountType {
+    Saving,
+    Checking,
 }

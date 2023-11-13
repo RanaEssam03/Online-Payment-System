@@ -41,7 +41,7 @@ abstract public class TransactionServices {
     }
 
     public double inquire() throws IOException {
-        return transactionProvider.getBalance(account.getMobileNumber());
+        return transactionProvider.getBalance(account.getMobile());
     }
 
 }
