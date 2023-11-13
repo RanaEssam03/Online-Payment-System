@@ -33,13 +33,18 @@ public class Account {
         this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     // Getter for mobile
     public String getMobile() {
         return mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     // Setter for mobile

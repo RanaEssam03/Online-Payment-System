@@ -1,84 +1,68 @@
-//import models.Account;
-//import models.BankAccount;
-//import models.WalletAccount;
-//import providers.APIProvider;
-//import providers.BankProvider;
-//import providers.WalletProvider;
-//import services.UserServices;
-//
-//import java.io.IOException;
-//import java.util.ArrayList;
-//import java.util.Scanner;
-//
-//
-//public class Main {
-//    public static void mainMenu() throws IOException {
-//        while (true) {
-//            System.out.println("Please choose one of these options:-");
-//            System.out.println("1. Register using bank account.");
-//            System.out.println("2. Register using E-Wallet.");
-//            System.out.println("3. Exit if you already have an account.");
-//            Scanner in = new Scanner(System.in);
-//            int choice;
-//            choice = in.nextInt();
-//            if (choice == 3) {
-//                break;
-//            }
-//            UserServices userServices = new UserServices(); //function's place is here if we put login, logout along with user services
-//            switch (choice) {
-//                case 1:
-//                    Scanner input = new Scanner(System.in);
-//                    String [] banks = {"CIB", "HSBC", "National Bank of Egypt"};
-//                    System.out.println("Please choose one of these banks:-");
-//                    System.out.println("1. " + banks[0]);
-//                    System.out.println("2. " + banks[1]);
-//                    System.out.println("3. " + banks[2]);
-//                    int c;
-//                    c = in.nextInt();
-//                    if(c - 1 >= banks.length){
-//                        System.out.println("Invalid bank choice, please re-enter your choice: ");
-//                        c = in.nextInt();
-//                    }
-//                    Account bankAccount= new BankAccount();
-//                    APIProvider bankProvider = new BankProvider("CIB");
-//                    System.out.print("Please enter the attached mobile number to your bank account: ");
-//                    String mobileNumber;
-//                    mobileNumber = input.nextLine();
-//                    System.out.println(mobileNumber);
-//                    while(!userServices.register(bankAccount, mobileNumber, bankProvider)){
-//                        System.out.println("There isn't a bank account with this mobile number, please re-enter your mobile number: ");
-//                        mobileNumber = input.nextLine();
-//                    }
-//                    break;
-//                case 2:
-//                    Scanner input2 = new Scanner(System.in);
-//                    String [] wallets = {"Vodafone Cash", "Fawry"};
-//                    System.out.println("Please choose one of these banks:-");
-//                    System.out.println("1. " + wallets[0]);
-//                    System.out.println("2. " + wallets[1]);
-//                    int b;
-//                    b = in.nextInt();
-//                    if(b - 1 >= wallets.length){
-//                        System.out.println("Invalid wallet choice, please re-enter your choice: ");
-//                        b = in.nextInt();
-//                    }
-//                    Account walletAccount = new WalletAccount();
-//                    APIProvider walletProvider = new WalletProvider(wallets[b - 1]);
-//                    String mobile_number;
-//                    mobile_number = input2.nextLine();
-//                    while(!userServices.register(walletAccount, mobile_number, walletProvider)){
-//                        System.out.print("This mobile number has no wallet, please re-enter your mobile number: ");
-//                        mobile_number = input2.nextLine();
-//                    }
-//                    break;
-//                case 3:
-//                    break;
-//            }
-//        }
-//    }
-//    public static void main(String[] args) throws IOException {
-//        System.out.println("Welcome to our online payment system");
-//        mainMenu();
-//        //menu for logging in and using all the app's features
-//    }
-//}
+import java.util.Scanner;
+
+import models.Account;
+import services.Authentication;
+
+public class Main {
+    private static Account currentUser;
+
+    public static void main(String[] args) {
+        // Create an instance of the Authentication class
+        Authentication authentication = new Authentication();
+        Scanner scanner = new Scanner(System.in);
+
+        // Create dummy accounts and add them to the authentication system
+        Account account1 = new Account("Rana", "01146993561", "1234", 1000.0);
+        authentication.addAccount(account1);
+
+        Account account2 = new Account("Nour", "01126134834", "5678", 500.0);
+        authentication.addAccount(account2);
+        while (true) {
+            // Prompt the user to choose between login, logout, or exit
+            System.out.println("Choose an option:");
+            System.out.println("1. Login");
+            System.out.println("2. Logout");
+            System.out.println("3. Exit");
+
+            int choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    // Login case
+                    System.out.println("Enter login credentials:");
+                    System.out.print("Username: ");
+                    String username = scanner.next();
+                    System.out.print("Password: ");
+                    String password = scanner.next();
+
+                    Account loginAttempt = authentication.login(username, password);
+                    if (loginAttempt != null) {
+                        currentUser = loginAttempt;
+                        System.out.println("Login successful. Welcome, " + currentUser.getName() + "!");
+                    } else {
+                        System.out.println("Incorrect login attempt. No account found with the given credentials.");
+                    }
+                    break;
+
+                case 2:
+                    // Logout case
+                    if (currentUser != null) {
+                        authentication.logout();
+                        System.out.println("Logout successful for " + currentUser.getName() + ".");
+                        currentUser = null;
+                    } else {
+                        System.out.println("No one is currently logged in. Cannot logout.");
+                    }
+                    break;
+
+                case 3:
+                    // Exit the program
+                    System.out.println("Exiting the program. Goodbye!");
+                    scanner.close();
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid choice. Please choose 1, 2, or 3.");
+            }
+        }
+    }
+}

@@ -1,4 +1,6 @@
-package models;
+package services;
+
+import models.Account;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -39,4 +41,8 @@ public class Authentication {
     public Account getLoggedInAccount() {
         return loggedInAccount;
     }
+//    public boolean verifyOtp(String code ){
+//
+//    }
 }
+

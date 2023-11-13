@@ -1,14 +1,25 @@
 package models;
 
-public class WalletAccount extends Account{
-    String walletNumber; //needed to make transactions with the wallet number
-
+public class WalletAccount extends Account {
     String walletName;
-    public WalletAccount(){
-        super();
+    WalletType walletType; // Use the enum
+
+    public enum WalletType {
+        EtisaleteCash,
+        VodafoneCash,
+        CIB,
+    }
+    public WalletType getWalletType() {
+        return walletType;
     }
 
-    public WalletAccount(String name, String mobile, String password, double balance) {
-        super(name, mobile, password, balance);
+    public void setWalletType(WalletType walletType) {
+        this.walletType = walletType;
     }
+    public WalletAccount(String name, String mobile, WalletType walletType, String password, double balance) {
+        super(name, mobile, password, balance);
+        this.walletType = walletType;
+    }
+
+
 }
