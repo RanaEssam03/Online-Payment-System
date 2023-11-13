@@ -12,11 +12,12 @@ public class Account {
 
 
     // Constructor
-    public Account(String name, String mobile, String password, double balance) {
+    public Account(String name, String mobile,String email, String password, double balance) {
         this.name = name;
         this.mobile = mobile;
         this.password = password;
         this.balance = balance;
+        this.email=email;
     }
 
     public Account() {
