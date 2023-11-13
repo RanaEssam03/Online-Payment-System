@@ -3,7 +3,9 @@ package models;
 import java.util.List;
 
 public class Account {
-    private String name;
+    public Account() {
+
+    }
     private String mobile;
     String email;
 
@@ -29,20 +31,6 @@ public class Account {
         this.balance = balance;
         this.email = email;
     }
-
-    public Account() {
-
-    }
-
-//    // Getter for name
-//    public String getName() {
-//        return name;
-//    }
-
-    // Setter for name
-//    public void setName(String name) {
-//        this.name = name;
-//    }
 
     public void setEmail(String email) {
         this.email = email;

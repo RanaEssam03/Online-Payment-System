@@ -1,61 +1,81 @@
 package services;
 
 import models.Account;
-import models.Authentication;
 import models.BankAccount;
 import models.WalletAccount;
-import providers.APIProvider;
-import providers.BankProvider;
+import models.WalletAccountType;
+import providers.BankVerification;
+import providers.ConnectionAPI;
 import providers.WalletProvider;
+import providers.WalletVerification;
 
+import java.util.Objects;
 import java.util.Scanner;
 
-import static Database.Data.bankAccounts;
-import static Database.Data.walletAccounts;
+import static Database.Data.*;
 
 public class GUIManager {
+    private accounType currentAccountType;
+    public Authentication authentication = new Authentication();
     private UserServices userServices = new UserServices();
-    public void authenticate(){
+
+    public accounType getCurrentAccountType() {
+        return currentAccountType;
+    }
+    public void setCurrentAccountType(accounType currentAccountType) {
+        this.currentAccountType = currentAccountType;
+    }
+    public Account authenticate(){
+        Account loggedInAccount;
         System.out.println("Please choose one of these options:-");
         System.out.println("1. Register using bank account.");
         System.out.println("2. Register using E-Wallet.");
         System.out.println("3. Login");
+        System.out.println("4. Exit");
         System.out.print("Choice: ");
-        Scanner in = new Scanner(System.in);
         int choice;
+        Scanner in = new Scanner(System.in);
         choice = in.nextInt();
         if (choice == 4) {
-            return;
+            return null;
         }
         switch (choice) {
-            case 1:
+            case 1: {
+                Scanner in1 = new Scanner(System.in);
                 Scanner input = new Scanner(System.in);
-                String [] banks = {"CIB", "HSBC", "National Bank of Egypt"};
+                String[] banks = {"CIB", "HSBC", "National Bank of Egypt"};
                 System.out.println("Please choose one of these banks:-");
                 System.out.println("1. " + banks[0]);
                 System.out.println("2. " + banks[1]);
                 System.out.println("3. " + banks[2]);
                 System.out.print("Choice: ");
                 int c;
-                c = in.nextInt();
-                if(c - 1 >= banks.length){
-                    System.out.println("Invalid bank choice, please re-enter your choice: ");
+                c = in1.nextInt();
+                if (c - 1 >= banks.length) {
+                    System.out.print("Invalid bank choice, please re-enter your choice: ");
                     c = in.nextInt();
                 }
-                BankAccount bankAccount= new BankAccount();
+                BankAccount bankAccount = new BankAccount();
+                ConnectionAPI connectionBankAPI = new ConnectionAPI(banks[c - 1]);
+                BankVerification bankVerification = new BankVerification();
+                bankVerification.setConnection(connectionBankAPI);
                 System.out.print("Please enter the attached mobile number to your bank account: ");
                 String mobileNumber;
                 mobileNumber = input.nextLine();
-                while(!userServices.register()){
-                    System.out.println("There is no bank account with this mobile number, please re-enter a valid mobile number");
+                while (!userServices.register(bankAccount, mobileNumber, bankVerification, banks[c - 1])) {
+                    System.out.print("There mobile number has no bank account, please re-enter a valid mobile number: ");
                     mobileNumber = input.nextLine();
                 }
+                bankAccount.setBalance(bankVerification.getBalance(mobileNumber, banks[c - 1]));
+                bankAccount.setAccountNumber(bankVerification.getAccountNumber(mobileNumber, banks[c - 1]));
+                accounts.add(bankAccount);
                 bankAccounts.add(bankAccount);
-                String userName = bankAccount.getUserName();
-                String password = bankAccount.getPassword();
-                //call login function and pass username and password
-                break;
+                currentAccountType = accounType.BankAccount;
+                return bankAccount;
+            }
             case 2:
+            {
+                Scanner in2 = new Scanner(System.in);
                 Scanner input2 = new Scanner(System.in);
                 String [] wallets = {"Vodafone Cash", "Etisalat Cash"};
                 System.out.println("Please choose one of these wallets:-");
@@ -63,25 +83,52 @@ public class GUIManager {
                 System.out.println("2. " + wallets[1]);
                 System.out.print("Choice: ");
                 int b;
-                b = in.nextInt();
+                b = in2.nextInt();
                 if(b - 1 >= wallets.length){
                     System.out.println("Invalid wallet choice, please re-enter your choice: ");
                     b = in.nextInt();
                 }
                 WalletAccount walletAccount= new WalletAccount();
-                APIProvider walletProvider = new WalletProvider(wallets[b - 1]);
+                ConnectionAPI connectionWalletAPI = new ConnectionAPI(wallets[b - 1]);
+                WalletVerification walletVerification = new WalletVerification();
+                walletVerification.setConnection(connectionWalletAPI);
+                if(b == 1) {
+                    walletAccount.setWalletAccountType(WalletAccountType.VodafoneCash);
+                }
+                else{
+                    walletAccount.setWalletAccountType(WalletAccountType.EtisalatCash);
+                }
+                System.out.print("Please enter the attached mobile number to your wallet account: ");
                 String mobile_number;
                 mobile_number = input2.nextLine();
-                while(!userServices.register(){
+                while(!userServices.register(walletAccount, mobile_number, walletVerification, wallets[b - 1])){
                     System.out.print("This mobile number has no wallet, please re-enter your mobile number: ");
                     mobile_number = input2.nextLine();
                 }
+                accounts.add(walletAccount);
                 walletAccounts.add(walletAccount);
-                break;
-            case 3:
+                currentAccountType = accounType.WalletAccount;
+                return walletAccount;
+            }
+            case 3: {
                 //login
-                break;
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Enter login credentials:");
+                System.out.print("Username: ");
+                String username = scanner.next();
+                System.out.print("Password: ");
+                String passwordLogin = scanner.next();
+                while ((loggedInAccount = authentication.login(username, passwordLogin)) == null) {
+                    System.out.println("Please enter valid credentials");
+                    System.out.print("Username: ");
+                    username = scanner.next();
+                    System.out.print("Password: ");
+                    passwordLogin = scanner.next();
+                }
+                return loggedInAccount;
+            }
         }
+        return null;
     }
 }
 

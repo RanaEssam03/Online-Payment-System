@@ -1,7 +1,8 @@
 package services;
 
 import models.Account;
-import providers.APIProvider;
+import providers.BankVerification;
+import providers.Verification;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -9,34 +10,37 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class UserServices {
-    public static boolean patternMatches(String emailAddress, String regexPattern) {
-        return Pattern.compile(regexPattern)
-                .matcher(emailAddress)
-                .matches();
-    }
-    public  boolean register(Account account, String mobileNumber, APIProvider provider) throws IOException {
-        double balance = provider.verifyAccount(mobileNumber);
-        if(balance == -1){
+    public  boolean register(Account account, String mobileNumber, Verification verifier, String verifierName){
+        if(!verifier.verifyAccount(mobileNumber, verifierName)){
             return false;
         }
-        account.setBalance(balance);
+        boolean valid;
         account.setMobile(mobileNumber);
-        System.out.println("Please enter the following details:- ");
-        String name;
+        System.out.println("Please enter the following data:- ");
+        String userName;
         String email;
         String password;
         String password2;
-        System.out.print("Name: ");
+        System.out.print("username(name@instapay): ");
         Scanner in = new Scanner(System.in);
-        name = in.nextLine();
+        userName = in.nextLine();
+        while(!userName.contains("@instapay")){
+            System.out.print("Ivalid username, please re-enter your username: ");
+            userName = in.nextLine();
+        }
+        account.setUserName(userName);
         System.out.print("\n");
         String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         System.out.print("Email: ");
         email = in.nextLine();
-        while(!patternMatches(email, emailRegex)){
+        valid = Pattern.compile(emailRegex)
+                        .matcher(email)
+                        .matches();
+        while(!valid){
             System.out.println("Invalid email format, please re-enter your email: ");
             email = in.nextLine();
+            valid = Pattern.compile(emailRegex).matcher(email).matches();
         }
         account.setEmail(email);
         System.out.print("\n"); //Needed just for memorizing password rules when testing
@@ -53,14 +57,16 @@ public class UserServices {
                 + "(?=.*[a-z])(?=.*[A-Z])"
                 + "(?=.*[@#$%^&+=])"
                 + "(?=\\S+$).{8,20}$";
-        while(!patternMatches(password, passwordRegex)){
+        valid = Pattern.compile(passwordRegex).matcher(password).matches();
+        while(!valid){
             System.out.println("Invalid password format, please re-enter your password: ");
             password = in.nextLine();
+            valid = Pattern.compile(passwordRegex).matcher(password).matches();
         }
         System.out.print("Re-enter your password: ");
         password2 = in.nextLine();
         while(!Objects.equals(password, password2)){
-            System.out.println("Passwords don't match, please re-enter your pasword correctly: ");
+            System.out.println("Passwords don't match, please re-enter your password correctly: ");
             password2 = in.nextLine();
         }
         account.setPassword(password);

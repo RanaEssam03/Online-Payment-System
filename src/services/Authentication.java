@@ -1,21 +1,24 @@
-package models;
+package services;
+
+import models.Account;
 
 import java.util.List;
 import java.util.ArrayList;
+import static Database.Data.*;
 
 public class Authentication {
-    private List<Account> accounts;
+    public void setLoggedInAccount(Account loggedInAccount) {
+        this.loggedInAccount = loggedInAccount;
+    }
+
     private Account loggedInAccount;
 
-    public Authentication() {
-        this.accounts = new ArrayList<>();
-        this.loggedInAccount = null;  // No one is logged in initially
-    }
+//    public Authentication() {
+//        this.accounts = new ArrayList<>();
+//        this.loggedInAccount = null;  // No one is logged in initially
+//    }
 
     // Method to add an account to the authentication system
-    public void addAccount(Account account) {
-        accounts.add(account);
-    }
 
     public Account login(String name, String password) {
         for (Account account : accounts) {

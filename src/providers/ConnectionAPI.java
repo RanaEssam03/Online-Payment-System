@@ -10,5 +10,8 @@ public  class ConnectionAPI {
         this.name = name;
         this.apiURL = "https://"+name+".com";
     }
+    public String getName() {
+        return name;
+    }
 
 }
