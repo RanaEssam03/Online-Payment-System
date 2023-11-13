@@ -5,6 +5,7 @@ import models.Account;
 import models.BankAccount;
 import models.WalletAccount;
 import models.WalletAccountType;
+import providers.Transaction.BankProvider;
 import services.Transaction.BankServices;
 import services.Transaction.WalletServices;
 
@@ -86,8 +87,10 @@ public class GUIManager {
     }
 
     void bankAccountTransaction(Account currentAccount){}
- static void walletTransaction(WalletAccount currentAccount, String walletName) throws IOException {
-        WalletServices walletServices = new WalletServices(walletName, currentAccount);
+ static void walletTransaction(WalletAccount currentAccount) throws IOException {
+//     BankProvider transactionProvider = (BankProvider) super.transactionProvider;
+
+        WalletServices walletServices = new WalletServices(currentAccount.getWalletAccountType().toString(), currentAccount);
         Scanner in = new Scanner(System.in);
         while(true){
             System.out.println("Please choose one of these options:-");
@@ -129,8 +132,9 @@ public class GUIManager {
         // TODo Create a function to pay bills
 
     }
-    static void bankAccountTransaction(BankAccount currentAccount, String bankName) throws IOException {
-        BankServices bankServices = new BankServices(bankName, currentAccount);
+    static void bankAccountTransaction(BankAccount currentAccount) throws IOException {
+
+        BankServices bankServices = new BankServices(currentAccount.getBankName(), currentAccount);
         Scanner in = new Scanner(System.in);
         while(true){
             System.out.println("Please choose one of these options:-");
@@ -183,7 +187,7 @@ public class GUIManager {
     public static void main(String[] args) throws IOException {
         setCurrentAccounts();
 //        walletTransaction(walletAccounts.get(0), "Vodafone");
-        bankAccountTransaction(bankAccounts.get(0), "CIB");
+        bankAccountTransaction(bankAccounts.get(0));
     }
 }
 
