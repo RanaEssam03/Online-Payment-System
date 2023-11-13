@@ -1,4 +1,6 @@
-package models;
+package services;
+
+import models.Account;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class Authentication {
 
     public Account login(String name, String password) {
         for (Account account : accounts) {
-            if (account.getName().equals(name) && account.getPassword().equals(password)) {
+            if (account.getUserName().equals(name) && account.getPassword().equals(password)) {
                 return account; // Login successful, return the account
             }
         }
@@ -39,4 +41,8 @@ public class Authentication {
     public Account getLoggedInAccount() {
         return loggedInAccount;
     }
+//    public boolean verifyOtp(String code ){
+//
+//    }
 }
+
