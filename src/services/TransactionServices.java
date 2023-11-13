@@ -1,23 +1,23 @@
 package services;
 
 import models.Account;
-import providers.APIProvider;
+import providers.ConnectionAPI;
 
 public abstract class TransactionServices {
     Account account;
 
-    APIProvider apiProvider; // This the api provider that will be used for the transaction services
+    ConnectionAPI connectionAPI; // This the api provider that will be used for the transaction services
 
      void transferToWallet(int amount, String mobileNumber){
-        System.out.println("Transfer using transaction services using " + apiProvider.getName());
+        System.out.println("Transfer using transaction services using " + connectionAPI.getName());
      }
      double inquire(){
 
-        System.out.println("Inquire using transaction services using " + apiProvider.getName());
+        System.out.println("Inquire using transaction services using " + connectionAPI.getName());
         return account.getBalance();
     }
     public void payBills(){
          // TODO implement  bills
-        System.out.println("Pay bills using transaction services using " + apiProvider.getName());
+        System.out.println("Pay bills using transaction services using " + connectionAPI.getName());
     }
 }
