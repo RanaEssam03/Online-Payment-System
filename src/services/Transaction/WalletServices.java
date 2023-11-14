@@ -1,9 +1,8 @@
 package services.Transaction;
-import models.Account;
+import models.Account.Account;
 import providers.Transaction.WalletProvider;
 
 import java.io.IOException;
-import java.lang.reflect.AccessFlag;
 
 
 public class WalletServices extends TransactionServices {

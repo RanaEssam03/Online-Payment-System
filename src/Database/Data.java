@@ -1,6 +1,6 @@
 package Database;
 
-import models.*;
+import models.Account.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,7 @@
-package models;
+package models.Account;
+
+import models.Account.Account;
+import models.Account.BankAccountType;
 
 public class BankAccount extends Account {
     public String getAccountNumber() {

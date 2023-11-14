@@ -1,9 +1,7 @@
 package services;
 
-import models.Account;
+import models.Account.Account;
 
-import java.util.List;
-import java.util.ArrayList;
 import static Database.Data.*;
 
 public class Authentication {

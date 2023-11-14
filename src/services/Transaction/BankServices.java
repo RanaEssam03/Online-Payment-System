@@ -1,10 +1,9 @@
 package services.Transaction;//package services;
 
-import models.Account;
+import models.Account.Account;
 import providers.Transaction.BankProvider;
 
 import java.io.IOException;
-import java.lang.reflect.AccessFlag;
 
 public class BankServices extends TransactionServices implements TransferringToBankAccount {
     public BankServices(String bankName, Account account) {

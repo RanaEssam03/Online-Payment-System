@@ -1,15 +1,9 @@
 package services;
 
-import models.Account;
+import models.Account.Account;
 import models.Bills.Bill;
 import providers.BillPayment.BillCompany;
-import providers.BillPayment.ElectricityCompany;
-import providers.BillPayment.GasCompany;
 import providers.Transaction.TransactionProvider;
-import providers.BillPayment.WaterCompany;
-
-import java.util.Objects;
-import java.util.Scanner;
 
 public  class BillServices {
     BillCompany billCompany;

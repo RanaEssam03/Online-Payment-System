@@ -1,4 +1,4 @@
-package providers;
+package providers.verification;
 
 import models.ConnectionAPI;
 

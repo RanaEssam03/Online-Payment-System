@@ -1,6 +1,6 @@
 package services;
-import models.Account;
-import providers.Verification;
+import models.Account.Account;
+import providers.verification.Verification;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;

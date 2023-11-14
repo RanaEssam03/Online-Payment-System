@@ -1,8 +1,11 @@
-package providers;
+package providers.verification;
+
+import providers.BalanceGetter;
+import providers.verification.Verification;
 
 import static Database.Data.*;
 
-public class WalletVerification extends Verification implements BalanceGetter{
+public class WalletVerification extends Verification implements BalanceGetter {
     @Override
     public boolean verifyAccount(String mobileNumber, String verifier) {
         System.out.println(verifier);

@@ -2,8 +2,7 @@ package providers.Transaction;//package providers;
 
 import java.io.IOException;
 import Database.Data;
-import models.Account;
-import models.BankAccount;
+import models.Account.Account;
 
 public class BankProvider extends TransactionProvider {
 

@@ -1,6 +1,6 @@
 package services.Transaction;
 
-import models.Account;
+import models.Account.Account;
 import providers.Transaction.TransactionProvider;
 
 import java.io.IOException;

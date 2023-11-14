@@ -1,6 +1,5 @@
-package services;
-
 import models.*;
+import models.Account.*;
 import models.Bills.Bill;
 import providers.BillPayment.BillCompany;
 import providers.BillPayment.ElectricityCompany;
@@ -9,30 +8,32 @@ import providers.BillPayment.WaterCompany;
 import providers.Transaction.BankProvider;
 import providers.Transaction.TransactionProvider;
 import providers.Transaction.WalletProvider;
+import services.Authentication;
+import services.BillServices;
 import services.Transaction.BankServices;
 import services.Transaction.WalletServices;
 
 import java.io.IOException;
 
-import providers.BankVerification;
+import providers.verification.BankVerification;
 
 
-import providers.WalletVerification;
+import providers.verification.WalletVerification;
+import services.UserServices;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 import static Database.Data.*;
 
 public class GUIManager {
-    private accounType currentAccountType;
+    private AccountType currentAccountType;
     public Authentication authentication = new Authentication();
     private UserServices userServices = new UserServices();
 
-    public accounType getCurrentAccountType() {
+    public AccountType getCurrentAccountType() {
         return currentAccountType;
     }
-    public void setCurrentAccountType(accounType currentAccountType) {
+    public void setCurrentAccountType(AccountType currentAccountType) {
         this.currentAccountType = currentAccountType;
     }
     public Account authenticate(){
@@ -81,7 +82,7 @@ public class GUIManager {
                 bankAccount.setAccountNumber(bankVerification.getAccountNumber(mobileNumber, banks[c - 1]));
                 accounts.add(bankAccount);
                 bankAccounts.add(bankAccount);
-                currentAccountType = accounType.BankAccount;
+                currentAccountType = AccountType.BankAccount;
                 return bankAccount;
             }
             case 2:
@@ -118,7 +119,7 @@ public class GUIManager {
                 }
                 accounts.add(walletAccount);
                 walletAccounts.add(walletAccount);
-                currentAccountType = accounType.WalletAccount;
+                currentAccountType = AccountType.WalletAccount;
                 return walletAccount;
             }
             case 3: {
@@ -144,7 +145,7 @@ public class GUIManager {
     }
 
 
-    // TODO
+    // TODO complete
    public  void walletTransaction(WalletAccount currentAccount) throws IOException {
 //     BankProvider transactionProvider = (BankProvider) super.transactionProvider;
 

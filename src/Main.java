@@ -1,14 +1,12 @@
 
-import models.Account;
+import models.Account.Account;
 
-import models.BankAccount;
-import models.WalletAccount;
-import services.GUIManager;
+import models.Account.BankAccount;
+import models.Account.WalletAccount;
 
 
 import java.io.IOException;
 
-import static Database.Data.accounts;
 import static Database.Data.setCurrentAccounts;
 
 

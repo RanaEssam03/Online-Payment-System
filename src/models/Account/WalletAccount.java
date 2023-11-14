@@ -1,4 +1,4 @@
-package models;
+package models.Account;
 
 public class WalletAccount extends Account {
     String walletName;
