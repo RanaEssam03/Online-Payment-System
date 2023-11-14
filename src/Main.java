@@ -1,15 +1,12 @@
-import Database.Data;
+
 import models.Account;
+
 import models.BankAccount;
 import models.WalletAccount;
-import providers.BankProvider;
-import providers.WalletProvider;
 import services.GUIManager;
-import services.UserServices;
+
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 import static Database.Data.accounts;
 import static Database.Data.setCurrentAccounts;
@@ -25,9 +22,17 @@ public class Main {
         if(loggedInAccount == null){
             return;
         }
-        for(Account account : accounts){
-            System.out.println(account.getUserName() + " " + account.getPassword() + " " + account.getMobile() + " " + account.getBalance());
+        if(loggedInAccount instanceof BankAccount){
+            GUI.bankAccountTransaction((BankAccount) loggedInAccount);
         }
+        else if(loggedInAccount instanceof WalletAccount){
+            GUI.walletTransaction((WalletAccount) loggedInAccount);
+        }
+
+
+//        for(Account account : accounts){
+//            System.out.println(account.getUserName() + " " + account.getPassword() + " " + account.getMobile() + " " + account.getBalance());
+//        }
         //menu using all the app's features
     }
 }

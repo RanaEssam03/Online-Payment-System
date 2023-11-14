@@ -1,9 +1,7 @@
 package services;
 
-import models.Account;
-import models.BankAccount;
+import models.*;
 import models.Bills.Bill;
-import models.WalletAccount;
 import providers.BillPayment.BillCompany;
 import providers.BillPayment.ElectricityCompany;
 import providers.BillPayment.GasCompany;
@@ -15,9 +13,9 @@ import services.Transaction.BankServices;
 import services.Transaction.WalletServices;
 
 import java.io.IOException;
-import models.WalletAccountType;
+
 import providers.BankVerification;
-import providers.ConnectionAPI;
+
 
 import providers.WalletVerification;
 
@@ -146,7 +144,8 @@ public class GUIManager {
     }
 
 
-    static void walletTransaction(WalletAccount currentAccount) throws IOException {
+    // TODO
+   public  void walletTransaction(WalletAccount currentAccount) throws IOException {
 //     BankProvider transactionProvider = (BankProvider) super.transactionProvider;
 
         WalletServices walletServices = new WalletServices(currentAccount.getWalletAccountType().toString(), currentAccount);
@@ -181,7 +180,7 @@ public class GUIManager {
         }
     }
 
-    static void billPayment(Account currentAccount, TransactionProvider transactionProvider) throws IOException {
+   public  void billPayment(Account currentAccount, TransactionProvider transactionProvider) throws IOException {
         System.out.println("Please choose one of these options:-");
         System.out.println("1. Gas.");
         System.out.println("2. Electricity.");
@@ -230,7 +229,7 @@ public class GUIManager {
 
     }
 
-    static void bankAccountTransaction(BankAccount currentAccount) throws IOException {
+ public   void bankAccountTransaction(BankAccount currentAccount) throws IOException {
 
         BankServices bankServices = new BankServices(currentAccount.getBankName(), currentAccount);
         Scanner in = new Scanner(System.in);
@@ -279,10 +278,10 @@ public class GUIManager {
     }
 
 
-    public static void main(String[] args) throws IOException {
-        setCurrentAccounts();
-//        walletTransaction(walletAccounts.get(0), "Vodafone");
-        bankAccountTransaction(bankAccounts.get(0));
-    }
+//    public static void main(String[] args) throws IOException {
+//        setCurrentAccounts();
+////        walletTransaction(walletAccounts.get(0), "Vodafone");
+//        bankAccountTransaction(bankAccounts.get(0));
+//    }
 }
 

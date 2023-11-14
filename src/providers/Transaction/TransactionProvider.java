@@ -38,7 +38,6 @@ abstract public class TransactionProvider {
      * @throws IOException
      */
     public abstract boolean transferToWallet(double amount, String mobileNumber, Account currentAccount) throws IOException;
-
-
+    
 
 }

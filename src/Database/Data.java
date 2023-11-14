@@ -20,7 +20,6 @@ public class Data {
     public static Map<String, Map<String, String[]>> banksMap = new HashMap<String, Map<String, String[]>>();
     public static Map<String, Map<String, Double>> walletsMap = new HashMap<String, Map<String, Double>>();
 
-    public static Map<String, Map<String, String[]>> banksMap = new HashMap<String, Map<String, String[]>>();
 
     public static void setCurrentAccounts(){
         String userName, mobile, email, password;

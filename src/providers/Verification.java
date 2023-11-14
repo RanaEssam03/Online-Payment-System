@@ -1,5 +1,7 @@
 package providers;
 
+import models.ConnectionAPI;
+
 public abstract class Verification {
 
     private ConnectionAPI connection;
