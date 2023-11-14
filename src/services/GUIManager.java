@@ -15,7 +15,6 @@ import services.Transaction.BankServices;
 import services.Transaction.WalletServices;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Scanner;
 
 import static Database.Data.*;
@@ -138,7 +137,7 @@ public class GUIManager {
         BillCompany billCompany = null;
         Scanner in = new Scanner(System.in);
         String billType = in.nextLine();
-       switch (billType) {
+        switch (billType) {
             case "1":
                 billCompany = new GasCompany();
                 break;
@@ -148,9 +147,9 @@ public class GUIManager {
             case "3":
                 billCompany = new WaterCompany();
                 break;
-           default:
-               System.out.println("Invalid choice");
-               return;
+            default:
+                System.out.println("Invalid choice");
+                return;
 
         }
 
