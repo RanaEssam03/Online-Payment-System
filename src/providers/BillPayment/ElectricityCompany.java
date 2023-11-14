@@ -11,18 +11,17 @@ public class ElectricityCompany extends BillCompany {
     public ElectricityCompany() {
         super(new ConnectionAPI("Electricity_Company"));
     }
-    public Bill getBill(/*Integer customerID*/) {
-
+    public Bill getBill(Integer customerID) {
         Random random = new Random();
-        Double billAmount = random.nextDouble(100);
         Double unitPrice = random.nextDouble(1000);
         Double usedAmount = random.nextDouble(1000);
-        ElectricityBill electricityBill = new ElectricityBill(billAmount, 1, unitPrice, usedAmount);
+        ElectricityBill electricityBill = new ElectricityBill(customerID, unitPrice, usedAmount);
         return electricityBill;
     }
 
     public boolean confirmPayment() {
-        System.out.println("Electricity bill payment confirmed");
+        // TODO : could be concrete method in BillCompany??
+        System.out.println("Electricity bill payment confirmed using " + connectionAPI.getApiURL());
         return true;
     }
 }
