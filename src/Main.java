@@ -26,7 +26,7 @@ public class Main {
             return;
         }
         for(Account account : accounts){
-            System.out.println(account.getUserName());
+            System.out.println(account.getUserName() + " " + account.getPassword() + " " + account.getMobile() + " " + account.getBalance());
         }
         //menu using all the app's features
     }

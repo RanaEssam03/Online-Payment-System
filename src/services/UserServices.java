@@ -21,7 +21,7 @@ public class UserServices {
         String email;
         String password;
         String password2;
-        System.out.print("username(name@instapay): ");
+        System.out.print("Username(name@instapay): ");
         Scanner in = new Scanner(System.in);
         userName = in.nextLine();
         while(!userName.contains("@instapay")){

@@ -66,6 +66,7 @@ public class GUIManager {
                     System.out.print("There mobile number has no bank account, please re-enter a valid mobile number: ");
                     mobileNumber = input.nextLine();
                 }
+                bankAccount.setBankName(banks[c - 1]);
                 bankAccount.setBalance(bankVerification.getBalance(mobileNumber, banks[c - 1]));
                 bankAccount.setAccountNumber(bankVerification.getAccountNumber(mobileNumber, banks[c - 1]));
                 accounts.add(bankAccount);
@@ -125,6 +126,7 @@ public class GUIManager {
                     System.out.print("Password: ");
                     passwordLogin = scanner.next();
                 }
+                System.out.println("Logged in to your account successfully");
                 return loggedInAccount;
             }
         }
