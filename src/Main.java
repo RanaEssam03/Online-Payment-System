@@ -3,6 +3,7 @@ import models.Account.Account;
 
 import models.Account.BankAccount;
 import models.Account.WalletAccount;
+import views.InstaPay;
 
 
 import java.io.IOException;
@@ -12,25 +13,30 @@ import static Database.Data.setCurrentAccounts;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        setCurrentAccounts();
-        System.out.println("Welcome to our online payment system");
-        GUIManager GUI = new GUIManager();
-        Account loggedInAccount;
-        loggedInAccount = GUI.authenticate();
-        if(loggedInAccount == null){
-            return;
-        }
-        if(loggedInAccount instanceof BankAccount){
-            GUI.bankAccountTransaction((BankAccount) loggedInAccount);
-        }
-        else if(loggedInAccount instanceof WalletAccount){
-            GUI.walletTransaction((WalletAccount) loggedInAccount);
-        }
-
-
-//        for(Account account : accounts){
-//            System.out.println(account.getUserName() + " " + account.getPassword() + " " + account.getMobile() + " " + account.getBalance());
-//        }
-        //menu using all the app's features
+        InstaPay app = new InstaPay();
+        app.run();
     }
+
+    /**
+    Registered account using CIB Bank account
+    username : nourmuhammad@instapay
+    password: Software2023$
+    ***/
+
+    /**
+     Registered account using vodafone cash wallet
+     username: ranaessam@instapay
+     password: Software2023$
+     ***/
+
+    /**
+     To register using bank account use this mobile number 01114335538
+     in CIB bank to make sure that it will be verified
+     */
+    /**
+      To register using wallet use this mobile number 01007104077
+     in Etisalat online wallet to make sure that it will be verified
+     */
+
+
 }

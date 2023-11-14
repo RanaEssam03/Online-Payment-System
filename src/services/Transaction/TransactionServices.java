@@ -1,17 +1,17 @@
 package services.Transaction;
 
 import models.Account.Account;
-import providers.Transaction.TransactionProvider;
+import providers.Account.AccountProvider;
 
 import java.io.IOException;
 
 
 
 abstract public class TransactionServices {
-    protected TransactionProvider transactionProvider;
+    protected AccountProvider transactionProvider;
     Account account;
 
-    public TransactionServices(TransactionProvider transactionProvider, Account account) {
+    public TransactionServices(AccountProvider transactionProvider, Account account) {
         this.transactionProvider = transactionProvider;
         this.account = account;
     }

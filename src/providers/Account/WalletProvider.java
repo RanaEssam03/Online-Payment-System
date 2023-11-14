@@ -1,11 +1,11 @@
-package providers.Transaction;//package providers;
+package providers.Account;//package providers;
 
 
 import models.Account.Account;
 
 import java.io.IOException;
 
-public class WalletProvider extends TransactionProvider {
+public class WalletProvider extends AccountProvider {
 
     public WalletProvider(String name) {
         super(name);

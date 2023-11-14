@@ -1,24 +1,26 @@
 package services.Transaction;//package services;
 
 import models.Account.Account;
-import providers.Transaction.BankProvider;
+import providers.Account.BankProvider;
 
 import java.io.IOException;
 
-public class BankServices extends TransactionServices implements TransferringToBankAccount {
+public class BankServices extends TransactionServices  {
     public BankServices(String bankName, Account account) {
         super(new BankProvider(bankName), account);
     }
 
 
-    @Override
-    public void transferToBankAccount(int amount, String accountNumber) throws IOException {
 
-        // ?? TodO
+    public boolean transferToBankAccount(double amount, String accountNumber) throws IOException {
+
       BankProvider transactionProvider = (BankProvider) super.transactionProvider;
        if(transactionProvider.transferToBank(amount, accountNumber, account)){
            account.setBalance(account.getBalance() - amount);
+           return true;
        }
+       // here should return false as the balance is not enough
+       return false;
     }
 
     @Override

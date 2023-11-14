@@ -1,10 +1,11 @@
-package providers.Transaction;//package providers;
+package providers.Account;//package providers;
 
 import java.io.IOException;
 import Database.Data;
 import models.Account.Account;
+import models.Account.BankAccount;
 
-public class BankProvider extends TransactionProvider {
+public class BankProvider extends AccountProvider {
 
 
     public BankProvider(String name) {

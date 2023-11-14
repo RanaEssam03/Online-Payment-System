@@ -1,14 +1,14 @@
-package providers.Transaction;
+package providers.Account;
 
 import models.Account.Account;
 import models.ConnectionAPI;
 
 import java.io.IOException;
 
-abstract public class TransactionProvider {
+abstract public class AccountProvider {
     ConnectionAPI connection;
 
-    public TransactionProvider(String name) {
+    public AccountProvider(String name) {
         this.connection = new ConnectionAPI(name);
     }
 
