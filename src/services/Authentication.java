@@ -2,6 +2,8 @@ package services;
 
 import models.Account.Account;
 
+import java.util.Random;
+
 import static Database.Data.*;
 
 public class Authentication {
@@ -10,11 +12,6 @@ public class Authentication {
     }
 
     private Account loggedInAccount;
-
-//    public Authentication() {
-//        this.accounts = new ArrayList<>();
-//        this.loggedInAccount = null;  // No one is logged in initially
-//    }
 
     // Method to add an account to the authentication system
 
@@ -40,8 +37,26 @@ public class Authentication {
     public Account getLoggedInAccount() {
         return loggedInAccount;
     }
-//    public boolean verifyOtp(String code ){
-//
-//    }
+
+    public void sendOtp(String userEmail) {
+        String generatedOtp = generateRandomOtp();
+        System.out.println("OTP sent to " + userEmail + ": " + generatedOtp);
+    }
+
+    public String generateRandomOtp() {
+        // Generate a random OTP of the specified length
+        Random random = new Random();
+        StringBuilder otp = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            otp.append(random.nextInt(10)); // Appending a random digit (0-9)
+        }
+
+        return otp.toString();
+    }
+
+    public boolean verifyOtp(String code) {
+        String generatedOtp = generateRandomOtp();
+        return generatedOtp.equals(code);
+    }
 }
 
