@@ -11,6 +11,13 @@ public class WalletProvider extends AccountProvider {
         super(name);
     }
 
+    /**
+     *
+     * @param mobileNumber the mobile number of the user
+     * @param currentAccount
+     * @return
+     * @throws IOException
+     */
     @Override
     public double getBalance(String mobileNumber, Account currentAccount) throws IOException {
         System.out.println("Get balance from wallet using " + connection.getApiURL());

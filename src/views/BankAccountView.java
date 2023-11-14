@@ -52,6 +52,9 @@ public class BankAccountView {
                 if (!bankServices.transfer(amount, accountNumber)) {
                     System.out.println("You don't have enough balance to transfer this amount.");
                 }
+                else{
+                    System.out.println(" You have successfully transferred " + amount + " to " + accountNumber + "");
+                }
             } else if (choice == 3) {
                 System.out.println("Your balance is: " + bankServices.inquire());
             } else if (choice == 4) {

@@ -25,10 +25,7 @@ public class BankServices extends TransactionServices  {
 
     @Override
     public boolean transfer(double amount, String mobileNumber) throws IOException {
-        if(amount > 1000000){
-            System.out.println("You can't transfer more than 1000000");
-            return false;
-        }
+    
         if (transactionProvider.transferToWallet(amount, mobileNumber, account)) {
             account.setBalance(account.getBalance() - amount);
             return true;
