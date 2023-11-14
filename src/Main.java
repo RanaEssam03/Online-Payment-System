@@ -1,15 +1,8 @@
 
-import models.Account.Account;
-
-import models.Account.BankAccount;
-import models.Account.WalletAccount;
 import views.InstaPay;
 
 
 import java.io.IOException;
-
-import static Database.Data.setCurrentAccounts;
-
 
 public class Main {
     public static void main(String[] args) throws IOException {

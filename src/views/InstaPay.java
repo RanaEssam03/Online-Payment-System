@@ -1,3 +1,12 @@
+/// @Author Rana Essam
+// Last Modified By: Rana Essam
+// last modified: 14-11-2023
+/**
+ * Description: This class contains the main entry point of the program
+ * it contains the following methods:
+ * 1- run: this method is used to run the program
+ * 2- authenticate: this method is used to authenticate the user and register him
+ */
 package views;
 import models.*;
 import models.Account.*;
@@ -14,12 +23,10 @@ public class InstaPay {
     public Authentication authentication = new Authentication();
     private UserServices userServices = new UserServices();
 
-    public AccountType getCurrentAccountType() {
-        return currentAccountType;
-    }
-    public void setCurrentAccountType(AccountType currentAccountType) {
-        this.currentAccountType = currentAccountType;
-    }
+    /**
+     * this method is used to authenticate the user and register him  it will return the account that the user logged in with
+     * @return the account that the user logged in with
+     */
      Account authenticate(){
         Account loggedInAccount;
         System.out.println("Please choose one of these options:-");
@@ -128,6 +135,10 @@ public class InstaPay {
         return null;
     }
 
+    /**
+     * this method is used to run the program
+     * @throws IOException if the connection is not established
+     */
     public void run () throws IOException {
         setCurrentAccounts();
         System.out.println("Welcome to our online payment system");

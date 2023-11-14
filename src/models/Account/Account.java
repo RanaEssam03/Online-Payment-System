@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Account {
     public Account() {
-
     }
     private String mobile;
     String email;

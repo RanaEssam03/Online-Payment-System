@@ -1,5 +1,12 @@
+/// @Author Rana Essam
+// Last Modified By: Rana Essam
+// last modified: 14-11-2023
+/**
+ * Description: This clas contains view of the bank account and the user can choose what he wants to do
+ * it contains the following methods:
+ * 1- run: this method is used to run the bank account view
+ */
 package views;
-
 import models.Account.WalletAccount;
 import providers.Account.WalletProvider;
 import services.Transaction.WalletServices;

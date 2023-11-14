@@ -1,4 +1,11 @@
-
+/// @Author Rana Essam
+// Last Modified By: Rana Essam
+// last modified: 14-11-2023
+/**
+ * Description: This clas contains view of the bank account and the user can choose what he wants to do
+ * it contains the following methods:
+ * 1- run: this method is used to run the bank account view
+ */
 package views;
 import models.Account.BankAccount;
 import providers.Account.BankProvider;
@@ -10,10 +17,18 @@ public class BankAccountView {
 
     BankAccount currentAccount;
 
+    /**
+     * this constructor is used to initialize the bank account view
+     * @param currentAccount the current account that will be used
+     */
     public BankAccountView(BankAccount currentAccount) {
         this.currentAccount = currentAccount;
     }
 
+    /**
+     * this method is used to run the bank account view and the user can choose what he wants to do
+     * @throws IOException if the connection is not established
+     */
 
     public void run() throws IOException {
 

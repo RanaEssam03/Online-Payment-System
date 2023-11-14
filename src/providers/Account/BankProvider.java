@@ -1,4 +1,17 @@
-package providers.Account;//package providers;
+/// @Author Rana Essam
+// Last Modified By: Rana Essam
+// last modified: 14-11-2023
+/**
+ * Description: This class contains the implementation of the basic http requests methods in bank manner (CIB, NBE)
+ * and also contains the implementation of the transfer to bank account method
+ * it contains the following methods:
+ * 2- inquire: this method is used to inquire the balance of the user from the remote server
+ * 3- payBills: this method is used to pay bills from the remote server
+ * 4- withdraw: this method is used to withdraw money from the user account from the remote server
+ * 5- transferToWallet: this method is used to transfer money to another user wallet from the remote server
+ * 6- transferToBank: this method is used to transfer money to another user bank account from the remote server
+ */
+package providers.Account;
 
 import java.io.IOException;
 import Database.Data;
@@ -7,7 +20,10 @@ import models.Account.BankAccount;
 
 public class BankProvider extends AccountProvider {
 
-
+    /**
+     * this constructor is used to initialize the connection with the remote server
+     * @param name the name of the remote server
+     */
     public BankProvider(String name) {
         super(name);
     }

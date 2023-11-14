@@ -1,4 +1,16 @@
-package services.Transaction;//package services;
+/// @Author Rana Essam
+// Last Modified By: Rana Essam
+// last modified: 14-11-2023
+/***
+ * Description: This class contains all the services that the user could do with the bank account
+ * it contains the following methods:
+ * 1- transferToBankAccount: this method is used to transfer money to another user bank account from the remote server (bank)
+ * 2- transfer: this method is used to transfer money to another user wallet from the remote server (bank)
+ * 3- inquire: this method is used to inquire the balance of the user from the remote server (bank)
+ * 4- payBills: this method is used to pay bills from the remote server (bank)
+ */
+
+package services.Transaction;
 
 import models.Account.Account;
 import providers.Account.BankProvider;
@@ -23,6 +35,13 @@ public class BankServices extends TransactionServices  {
        return false;
     }
 
+    /**
+     * this method is used to transfer money to another user wallet from the remote server (bank)
+     * @param amount the amount of money that will be transferred
+     * @param mobileNumber the mobile number of the user that will receive the money
+     * @return true if the transfer is done successfully and false if not
+     * @throws IOException if the connection is not established
+     */
     @Override
     public boolean transfer(double amount, String mobileNumber) throws IOException {
     
@@ -37,6 +56,11 @@ public class BankServices extends TransactionServices  {
         return false;
     }
 
+    /**
+     * this method is used to inquire the balance of the user from the remote server (bank)
+     * @return the balance of the user from the remote server (bank)
+     * @throws IOException if the connection is not established
+     */
     @Override
     public double inquire() throws IOException {
         return transactionProvider.getBalance(account.getMobile(), account);
