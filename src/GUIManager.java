@@ -21,6 +21,8 @@ import providers.verification.BankVerification;
 import providers.verification.WalletVerification;
 import services.UserServices;
 
+import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
 
 import static Database.Data.*;
@@ -187,7 +189,7 @@ public class GUIManager {
         System.out.println("2. Electricity.");
         System.out.println("3. Water.");
         System.out.print("Choice: ");
-        BillCompany billCompany = null;
+        BillCompany billCompany;
         Scanner in = new Scanner(System.in);
         String billType = in.nextLine();
         switch (billType) {
@@ -205,9 +207,7 @@ public class GUIManager {
                 return;
 
         }
-
         BillServices billServices = new BillServices(billCompany, transactionProvider);
-
         System.out.println("Please choose one of these options:-");
         System.out.println("1. Inquire bill.");
         System.out.println("2. Pay bill.");
@@ -215,18 +215,23 @@ public class GUIManager {
         int choice;
         choice = in.nextInt();
         if (choice == 1) {
+            System.out.println("Please enter your customer ID: ");
+            Integer customerID;
+            customerID = in.nextInt();
             Bill bill = billServices.inquire();
-            System.out.println(bill.toString());
+            bill.printBill();
         } else if (choice == 2) {
-            if (billServices.pay(billCompany.getBill(), currentAccount)) {
+            System.out.println("Please enter your customer ID: ");
+            Integer customerID;
+            customerID = in.nextInt();
+            Random random = new Random();
+             customerID = random.nextInt(1000);
+            if (billServices.pay(billCompany.getBill(customerID), currentAccount)) {
                 System.out.println("Bill paid successfully");
             } else {
                 System.out.println("Bill payment failed");
             }
         }
-
-
-        // TODo Create a function to pay bills
 
     }
 

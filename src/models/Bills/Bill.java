@@ -11,7 +11,7 @@ public abstract class Bill {
         setBillAmount(billAmount);
         setBillID(billID);
         setCustomerID(customerID);
-        this.dueDate = LocalDate.now();
+        setDueDate(LocalDate.now());
     }
 
     public Double getBillAmount() {
@@ -45,4 +45,5 @@ public abstract class Bill {
     public void setCustomerID(Integer customerID) {
         this.customerID = customerID;
     }
+    public abstract void printBill();
 }

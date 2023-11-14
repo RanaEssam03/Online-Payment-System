@@ -11,7 +11,7 @@ abstract public class BillCompany {
         this.connectionAPI = connectionAPI;
     }
 
-    public abstract Bill getBill(/*Integer customerID*/);
+    public abstract Bill getBill(Integer customerID);
     public abstract boolean confirmPayment();
 
 }

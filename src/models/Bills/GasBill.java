@@ -2,12 +2,10 @@ package models.Bills;
 
 public class GasBill extends Bill {
     Integer gasMeterReading;
-    Integer usedAmount;
     static Integer billNumber = 0;
-    public GasBill(Double billAmount, Integer customerID, Integer gasMeterReading, Integer usedAmount){
+    public GasBill(Double billAmount, Integer customerID, Integer gasMeterReading){
         super(billAmount, "G" +(++billNumber), customerID);
-        this.gasMeterReading = gasMeterReading;
-        this.usedAmount = usedAmount;
+        setGasMeterReading(gasMeterReading);
     }
 
     public Integer getGasMeterReading() {
@@ -18,11 +16,12 @@ public class GasBill extends Bill {
         this.gasMeterReading = gasMeterReading;
     }
 
-    public Integer getUsedAmount() {
-        return usedAmount;
-    }
-
-    public void setUsedAmount(Integer usedAmount) {
-        this.usedAmount = usedAmount;
+    public void printBill(){
+        System.out.println("             Gas Bill Details");
+        System.out.println("Bill ID: " + billID);
+        System.out.println("Bill Amount: " + billAmount);
+        System.out.println("Customer ID: " + customerID);
+        System.out.println("Gas Meter Reading: " + gasMeterReading);
+        System.out.println();
     }
 }
