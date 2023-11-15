@@ -18,6 +18,7 @@ import java.io.IOException;
 import services.UserServices;
 import java.util.Scanner;
 import static Database.Data.*;
+import static java.lang.System.exit;
 
 public class InstaPay {
     private AccountType currentAccountType;
@@ -40,7 +41,7 @@ public class InstaPay {
         Scanner in = new Scanner(System.in);
         choice = in.nextInt();
         if (choice == 4) {
-            return null;
+            exit(0);
         }
         switch (choice) {
             case 1: {
@@ -83,7 +84,7 @@ public class InstaPay {
             {
                 Scanner in2 = new Scanner(System.in);
                 Scanner input2 = new Scanner(System.in);
-                String[] wallets = {"Vodafone Cash", "Etisalat Cash"};
+                String[] wallets = {"VodafoneCash", "EtisalatCash"};
                 System.out.println("Please choose one of these wallets:-");
                 System.out.println("1. " + wallets[0]);
                 System.out.println("2. " + wallets[1]);
@@ -149,21 +150,23 @@ public class InstaPay {
      */
     public void run () throws IOException {
         setCurrentAccounts();
-        System.out.println("Welcome to our online payment system");
-        Account loggedInAccount;
-        loggedInAccount = authenticate();
-        if(loggedInAccount == null){
-            return;
-        }
-        if(loggedInAccount instanceof BankAccount){
-            BankAccountView bankView = new BankAccountView((BankAccount) loggedInAccount);
-
-            bankView.run();
-        }
-        else if(loggedInAccount instanceof WalletAccount){
-            WalletAccountView walletView = new WalletAccountView((WalletAccount) loggedInAccount);
-            walletView.run();
-        }
+      while (true){
+          System.out.println("\n_______________________________________________________________________");
+          System.out.println("Welcome to our online payment system");
+          Account loggedInAccount;
+          loggedInAccount = authenticate();
+          if(loggedInAccount == null){
+              return;
+          }
+          if(loggedInAccount instanceof BankAccount){
+              BankAccountView bankView = new BankAccountView((BankAccount) loggedInAccount);
+              bankView.run();
+          }
+          else if(loggedInAccount instanceof WalletAccount){
+              WalletAccountView walletView = new WalletAccountView((WalletAccount) loggedInAccount);
+              walletView.run();
+          }
+      }
     }
 
 }

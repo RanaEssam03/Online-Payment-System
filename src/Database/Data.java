@@ -67,7 +67,7 @@ public class Data {
      * Key: wallet name
      * Value: map of mobile numbers and corresponding account balances
      */
-    public static Map<String, Map<String, Double>> walletsMap = new HashMap<String, Map<String, Double>>();
+    public static Map<String, Map<String, Double>> walletsMap = new HashMap<>();
 
 
     /**

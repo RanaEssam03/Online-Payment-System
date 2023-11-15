@@ -31,11 +31,11 @@ public class WalletAccountView {
             System.out.println("2. Inquire balance.");
             System.out.println("3. Transfer to instapay account.");
             System.out.println("4. Pay bills.");
-            System.out.println("5. Exit.");
+            System.out.println("5. log out.");
             System.out.print("Choice: ");
             int choice;
             choice = in.nextInt();
-            if (choice == 4) {
+            if (choice == 5) {
                 return;
             }
             if (choice == 1) {

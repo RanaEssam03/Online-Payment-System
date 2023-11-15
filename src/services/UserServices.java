@@ -38,6 +38,10 @@ public class UserServices {
             System.out.print("Ivalid username, please re-enter your username: ");
             userName = in.nextLine();
         }
+        while (verifyAccount(userName)){
+            System.out.print("Username already exists, please re-enter your username: ");
+            userName = in.nextLine();
+        }
         account.setUserName(userName);
         String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
@@ -78,6 +82,16 @@ public class UserServices {
             password2 = in.nextLine();
         }
         account.setPassword(password);
+        Authentication authentication = new Authentication();
+      String crntOTP =   authentication.sendOtp(mobileNumber);
+        System.out.print("Enter the OTP sent to your mobile number: ");
+        String otp;
+        otp = in.nextLine();
+        while(!Objects.equals(otp, crntOTP)){
+            System.out.println("Invalid OTP, please re-enter the OTP sent to your number: ");
+            otp = in.nextLine();
+        }
+        Data.accounts.add(account);
         System.out.println("Account created successfully");
         return true;
     }

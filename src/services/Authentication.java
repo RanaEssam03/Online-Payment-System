@@ -67,11 +67,12 @@ public class Authentication {
     /**
      * Sends an OTP (One-Time Password) to the specified user email.
      *
-     * @param userEmail The email address to which the OTP will be sent.
+     * @param mobileNumber The email address to which the OTP will be sent.
      */
-    public void sendOtp(String userEmail) {
+    public String sendOtp(String mobileNumber){
         String generatedOtp = generateRandomOtp();
-        System.out.println("OTP sent to " + userEmail + ": " + generatedOtp);
+        System.out.println("OTP sent to " + mobileNumber + ": " + generatedOtp);
+        return generatedOtp;
     }
 
     /**

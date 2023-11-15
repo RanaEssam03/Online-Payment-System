@@ -46,7 +46,7 @@ public class BankAccountView {
 
             System.out.println("4. Inquire balance.");
             System.out.println("5. Pay bills.");
-            System.out.println("6. Exit.");
+            System.out.println("6. log out.");
             System.out.print("Choice: ");
             int choice;
             choice = in.nextInt();
@@ -82,7 +82,7 @@ public class BankAccountView {
             }
             else if (choice == 3){
 
-                System.out.println("Please enter the username of the instapay account you want to transfer to: ");
+                System.out.println("Please enter the username of the instapay account you want to transfer to (ex: mohammed@instapay): ");
                 String username;
                 double amount;
                 username = in.next();

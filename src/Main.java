@@ -15,6 +15,11 @@ public class Main {
         }
     }
 
+    // you can transfer to any mobile number
+
+
+/// Registered accounts
+
     /**
     Registered account using CIB Bank Account
     username : nour@instapay
@@ -47,11 +52,15 @@ public class Main {
 
     /**
      To register using bank account use this mobile number 01122334455
-     in any bank option you choose to make sure that it will be verified
+     in HSBC bank option you choose to make sure that it will be verified
+     */
+    /**
+     To register using bank account use this mobile number 01122334456
+     in CIB bank option you choose to make sure that it will be verified
      */
 
     /**
-     To register using wallet use this mobile number 01032750535
+     To register using wallet use this mobile number 01032750533
      in Vodafone Cash Online Wallet to make sure that it will be verified
      */
 
