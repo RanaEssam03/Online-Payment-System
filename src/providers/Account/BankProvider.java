@@ -31,7 +31,7 @@ public class BankProvider extends AccountProvider {
     }
 
     @Override
-    public double getBalance(String mobileNumber, Account currentAccount) throws IOException {
+    public double getBalance(Account currentAccount) throws IOException {
         System.out.println("Get balance from wallet using " + connection.getApiURL());
         System.out.println();
         String currentBank = connection.getName();

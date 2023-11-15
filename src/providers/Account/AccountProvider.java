@@ -31,11 +31,10 @@ abstract public class AccountProvider {
     /**
      * this method is used to get the balance of the user from the remote server
      *
-     * @param mobileNumber the mobile number of the user
      * @return
      * @throws IOException
      */
-    public abstract double getBalance(String mobileNumber, Account currentAccount) throws IOException;
+    public abstract double getBalance(Account currentAccount) throws IOException;
 
     /**
      * this method is used to withdraw money from the user account from the remote server

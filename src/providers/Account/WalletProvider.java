@@ -26,13 +26,12 @@ public class WalletProvider extends AccountProvider {
 
     /**
      *
-     * @param mobileNumber the mobile number of the user that will receive the money
-     * @param currentAccount the current account that will transfer the money
+     * @param currentAccount the current account that will inquire the balance
      * @return the balance of the user from the remote server (bank)
      * @throws IOException if the connection is not established
      */
     @Override
-    public double getBalance(String mobileNumber, Account currentAccount) throws IOException {
+    public double getBalance( Account currentAccount) throws IOException {
         System.out.println("Get balance from wallet using " + connection.getApiURL());
      return Data.walletsMap.get(connection.getName()).get(currentAccount.getMobile());
 
