@@ -16,6 +16,7 @@ import models.Account.Account;
 import providers.Account.BankProvider;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class BankServices extends TransactionServices  {
     public BankServices(String bankName, Account account) {
@@ -49,10 +50,7 @@ public class BankServices extends TransactionServices  {
             account.setBalance(account.getBalance() - amount);
             return true;
         }
-        else {
-            System.out.println("You Don't have enough money");
 
-        }
         return false;
     }
 
@@ -65,5 +63,24 @@ public class BankServices extends TransactionServices  {
     public double inquire() throws IOException {
 
         return transactionProvider.getBalance( account);
+    }
+
+    @Override
+    public ArrayList<Boolean> transferToInstapayAccount(double amount, String username, Boolean notFound, Account currentAccount) throws IOException {
+        ArrayList<Boolean> ret  = new ArrayList<>();
+        if (!userServices.verifyAccount(username)){
+            ret.add(false);
+            ret.add(false);
+            return ret;
+        }
+
+        ret.add(true);
+
+        if (transactionProvider.withdraw(amount,  currentAccount)){
+            account.setBalance(account.getBalance() - amount);
+            ret.add(true);
+        }
+        ret.add(false);
+        return ret;
     }
 }

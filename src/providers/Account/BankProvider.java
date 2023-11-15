@@ -18,6 +18,7 @@ import Database.Data;
 import models.Account.Account;
 import models.Account.BankAccount;
 
+import static Database.Data.bankAccounts;
 import static Database.Data.banksMap;
 
 public class BankProvider extends AccountProvider {
@@ -49,7 +50,8 @@ public class BankProvider extends AccountProvider {
     public double getBalance(Account currentAccount) throws IOException {
         System.out.println("Get balance from wallet using " + connection.getApiURL());
         System.out.println();
-        String currentBank = connection.getName();
+       currentAccount = (BankAccount) currentAccount;
+       String currentBank = ((BankAccount) currentAccount).getBankName();
         return Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[1]); // here we get the balance of my demo database which represents the bank server in the real world
     }
 
@@ -58,14 +60,14 @@ public class BankProvider extends AccountProvider {
 
         // TODO : verify that the wallet is exists
         String currentBank = connection.getName();
-        Double currentAccountsBalance = Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[0]); // here we get the balance of my demo database which represents the bank server in the real world
+        Double currentAccountsBalance = Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[1]); // here we get the balance of my demo database which represents the bank server in the real world
         if( currentAccountsBalance < amount){
 
             return false;
         }
         System.out.println("Withdrawing using " + connection.getApiURL());
 
-        Data.banksMap.get(currentBank).get(currentAccount.getMobile())[0] = String.valueOf(currentAccountsBalance - amount);
+        Data.banksMap.get(currentBank).get(currentAccount.getMobile())[1] = String.valueOf(currentAccountsBalance - amount);
         return true;
     }
 
@@ -83,11 +85,11 @@ public class BankProvider extends AccountProvider {
 
         // TODO : verify that the wallet is exists
         String currentBank = connection.getName();
-       Double currentAccountsBalance = Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[0]); // here we get the balance of my demo database which represents the bank server in the real world
+       Double currentAccountsBalance = Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[1]); // here we get the balance of my demo database which represents the bank server in the real world
         if( currentAccountsBalance < amount){
             return false;
         }
-        Data.banksMap.get(currentBank).get(currentAccount.getMobile())[0] = String.valueOf(currentAccountsBalance - amount);
+        Data.banksMap.get(currentBank).get(currentAccount.getMobile())[1] = String.valueOf(currentAccountsBalance - amount);
 
         return true;
     }
@@ -101,15 +103,16 @@ public class BankProvider extends AccountProvider {
      * @throws IOException if the connection is not established
      */
     public boolean transferToBank(double amount, String accountNumber, Account currentAccount) throws IOException {
-        System.out.println("Transfer to Bank Account using " + connection.getApiURL());
 
         // TODO : verify that the bank is exists
         String currentBank = connection.getName();
-        Double currentAccountsBalance = Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[0]);
+        Double currentAccountsBalance = Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[1]);
         if( currentAccountsBalance < amount){
             return false;
         }
-        Data.banksMap.get(currentBank).get(currentAccount.getMobile())[0] = String.valueOf(currentAccountsBalance - amount);
+        System.out.println("Transfer to Bank Account using " + connection.getApiURL());
+
+        Data.banksMap.get(currentBank).get(currentAccount.getMobile())[1] = String.valueOf(currentAccountsBalance - amount);
 
         return true;
     }

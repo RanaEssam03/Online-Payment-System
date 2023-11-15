@@ -1,4 +1,5 @@
 package services;
+import Database.Data;
 import models.Account.Account;
 import providers.Account.AccountProvider;
 import java.util.Objects;
@@ -117,5 +118,14 @@ public class UserServices {
         }
         account.setPassword(newPassword);
         System.out.println("Password changed successfully");
+    }
+
+   public boolean verifyAccount(String username){
+        for (int i = 0; i < Data.accounts.size() ; i++) {
+            if(Data.accounts.get(i).getUserName().equals(username)){
+                return true;
+            }
+        }
+        return false;
     }
 }

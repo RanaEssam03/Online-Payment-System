@@ -102,7 +102,7 @@ public class Data {
         BankAccount account2 = new BankAccount(userName, mobile, password, balance, email);
         account2.setAccountType(BankAccountType.Saving);
         account2.setAccountNumber(accountNumber);
-        account.setBankName("National Bank of Egypt");
+        account2.setBankName("National Bank of Egypt");
         NationalBankAccounts.put(mobile, new String[]{accountNumber, tempBalance, account.getAccountType().toString()});
         accounts.add(account2);
         bankAccounts.add(account2);
@@ -116,12 +116,12 @@ public class Data {
         BankAccount account3 = new BankAccount(userName, mobile, password, balance, email);
         account3.setAccountType(BankAccountType.Checking);
         account3.setAccountNumber(accountNumber);
-        account.setBankName("HSBC");
+        account3.setBankName("HSBC");
         HSBCAccounts.put(mobile, new String[]{accountNumber, tempBalance, account.getAccountType().toString()});
         accounts.add(account3);
         bankAccounts.add(account3);
         userName = "rana@instapay";
-        mobile = "01114335538";
+        mobile = "01114335568";
         email = "ranaessam835@gmail.com";
         password = "Software2023$";
         balance = 80000;
@@ -131,7 +131,7 @@ public class Data {
         accounts.add(account4);
         walletAccounts.add(account4);
         userName = "merna@instapay";
-        mobile = "01114335538";
+        mobile = "01114335588";
         email = "mernaislam835@gmail.com";
         password = "Software2023$";
         balance = 30000;
@@ -140,10 +140,10 @@ public class Data {
         EtisalatCashAccounts.put(mobile, balance);
         accounts.add(account5);
         walletAccounts.add(account5);
-        CIBAccounts.put("01122334455", new String[]{"127", "7000", "Checking"});
+        CIBAccounts.put("01122334456", new String[]{"127", "7000", "Checking"});
         NationalBankAccounts.put("01122334455", new String[]{"128", "7000", "Checking"});
         HSBCAccounts.put("01122334455", new String[]{"129", "7000", "Checking"});
-        VodafoneCashAccounts.put("01032750535", 6000.0);
+        VodafoneCashAccounts.put("01032750533", 6000.0);
         EtisalatCashAccounts.put("01122334455", 5000.0);
         banksMap.put("CIB", CIBAccounts);
         banksMap.put("National Bank of Egypt", NationalBankAccounts);

@@ -25,6 +25,7 @@ public class WalletAccountView {
         WalletServices walletServices = new WalletServices(currentAccount.getWalletAccountType().toString(), currentAccount);
         Scanner in = new Scanner(System.in);
         while (true) {
+            System.out.println("\n____________________________________________________");
             System.out.println("Please choose one of these options:-");
             System.out.println("1. Transfer to another wallet.");
             System.out.println("2. Inquire balance.");

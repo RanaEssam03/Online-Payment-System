@@ -15,8 +15,6 @@ import models.ConnectionAPI;
 
 import java.io.IOException;
 
-import static Database.Data.banksMap;
-
 abstract public class AccountProvider {
     ConnectionAPI connection;
     /**

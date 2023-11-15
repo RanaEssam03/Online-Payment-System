@@ -68,7 +68,7 @@ public class InstaPay {
                     mobileNumber = input.nextLine();
                 }
                 bankAccount.setBankName(banks[c - 1]);
-                bankAccount.setBalance(bankAccountProvider.getBalance(mobileNumber, bankAccount));
+                bankAccount.setBalance(bankAccountProvider.getBalance( bankAccount));
                 bankAccount.setAccountNumber(bankAccountProvider.getAccountNumber(mobileNumber, banks[c - 1]));
                 accounts.add(bankAccount);
                 bankAccounts.add(bankAccount);
@@ -109,7 +109,7 @@ public class InstaPay {
                     System.out.print("This mobile number has no wallet, please re-enter your mobile number: ");
                     mobile_number = input2.nextLine();
                 }
-                walletAccount.setBalance(walletProvider.getBalance(mobile_number,walletAccount));
+                walletAccount.setBalance(walletProvider.getBalance(walletAccount));
                 accounts.add(walletAccount);
                 walletAccounts.add(walletAccount);
                 currentAccountType = AccountType.WalletAccount;
@@ -157,6 +157,7 @@ public class InstaPay {
         }
         if(loggedInAccount instanceof BankAccount){
             BankAccountView bankView = new BankAccountView((BankAccount) loggedInAccount);
+
             bankView.run();
         }
         else if(loggedInAccount instanceof WalletAccount){
