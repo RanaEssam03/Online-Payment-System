@@ -49,6 +49,14 @@ public class InstaPay {
         if (choice == 4) {
             exit(0);
         }
+        while(choice < 1 || choice > 4){
+            System.out.println("Invalid choice, please re-enter your choice");
+            System.out.print("Choice: ");
+            choice = in.nextInt();
+            if(choice == 4){
+                exit(0);
+            }
+        }
         switch (choice) {
             case 1: {
                 Scanner in1 = new Scanner(System.in);

@@ -62,7 +62,6 @@ public class ElectricityBill extends Bill {
         System.out.println("             Electricity Bill Details");
         System.out.println("Bill ID: " + billID);
         System.out.println("Bill Amount: " + billAmount);
-        System.out.println("Customer ID: " + customerID);
         System.out.println("Unit Price: " + unitPrice);
         System.out.println("Used Amount: " + usedAmount);
         System.out.println();
