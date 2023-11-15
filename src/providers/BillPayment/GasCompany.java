@@ -28,8 +28,8 @@ public class GasCompany extends BillCompany {
      */
     public Bill getBill(Integer customerID) {
         Random random = new Random();
-        Double billAmount = random.nextDouble(100);
-        Integer gasMeterReading = random.nextInt(1000);
+        Double billAmount = 5.0;
+        Integer gasMeterReading = 150;
         GasBill gasBill = new GasBill(billAmount, customerID, gasMeterReading);
         return gasBill;
     }

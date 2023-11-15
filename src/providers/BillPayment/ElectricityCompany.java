@@ -28,8 +28,8 @@ public class ElectricityCompany extends BillCompany {
      */
     public Bill getBill(Integer customerID) {
         Random random = new Random();
-        Double unitPrice = random.nextDouble(2);
-        Double usedAmount = random.nextDouble(1000);
+        Double unitPrice =2.5;
+        Double usedAmount = 100.5;
         ElectricityBill electricityBill = new ElectricityBill(customerID, unitPrice, usedAmount);
         return electricityBill;
     }

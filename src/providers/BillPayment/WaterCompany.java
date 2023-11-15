@@ -29,8 +29,8 @@ public class WaterCompany extends BillCompany {
     public Bill getBill(Integer customerID) {
         // TODO : customerID problem
         Random random = new Random();
-        Double unitPrice = random.nextDouble(6);
-        Double usedAmount = random.nextDouble(1000);
+        Double unitPrice = 6.5;
+        Double usedAmount = 200.5;
         WaterBill waterBill = new WaterBill(customerID, usedAmount, unitPrice);
         return waterBill;
     }
