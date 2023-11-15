@@ -18,6 +18,8 @@ import Database.Data;
 import models.Account.Account;
 import models.Account.BankAccount;
 
+import static Database.Data.banksMap;
+
 public class BankProvider extends AccountProvider {
 
     /**
@@ -38,7 +40,6 @@ public class BankProvider extends AccountProvider {
 
     @Override
     public boolean withdraw(double amount, Account currentAccount) {
-        System.out.println("Transfer to wallet using " + connection.getApiURL());
 
         // TODO : verify that the wallet is exists
         String currentBank = connection.getName();
@@ -47,6 +48,8 @@ public class BankProvider extends AccountProvider {
 
             return false;
         }
+        System.out.println("Withdrawing using " + connection.getApiURL());
+
         Data.banksMap.get(currentBank).get(currentAccount.getMobile())[0] = String.valueOf(currentAccountsBalance - amount);
         return true;
     }
@@ -95,4 +98,6 @@ public class BankProvider extends AccountProvider {
 
         return true;
     }
+
+
 }

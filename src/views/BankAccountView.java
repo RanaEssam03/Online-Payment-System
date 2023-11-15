@@ -9,6 +9,7 @@
 package views;
 import models.Account.BankAccount;
 import providers.Account.BankProvider;
+import providers.Account.WalletProvider;
 import services.Transaction.BankServices;
 import java.io.IOException;
 import java.util.Scanner;
@@ -74,6 +75,7 @@ public class BankAccountView {
                 System.out.println("Your balance is: " + bankServices.inquire());
             } else if (choice == 4) {
                 BillsView billsView = new BillsView(currentAccount, new BankProvider(currentAccount.getBankName()));
+                billsView.run();
             }
 
         }

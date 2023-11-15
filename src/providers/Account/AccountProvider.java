@@ -15,6 +15,8 @@ import models.ConnectionAPI;
 
 import java.io.IOException;
 
+import static Database.Data.banksMap;
+
 abstract public class AccountProvider {
     ConnectionAPI connection;
 
@@ -37,7 +39,6 @@ abstract public class AccountProvider {
 
     /**
      * this method is used to withdraw money from the user account from the remote server
-     *
      * @param amount
      * @return
      */
@@ -45,13 +46,13 @@ abstract public class AccountProvider {
 
     /**
      * this method is used to transfer money to another user account from the remote server
-     *
      * @param amount
      * @param mobileNumber
      * @return
      * @throws IOException
      */
     public abstract boolean transferToWallet(double amount, String mobileNumber, Account currentAccount) throws IOException;
-    
+
+
 
 }

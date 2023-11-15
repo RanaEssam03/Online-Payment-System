@@ -68,7 +68,7 @@ public class Data {
         banksMap.put("CIB", CIBAccounts);
         banksMap.put("National Bank of Egypt", NationalBankAccounts);
         banksMap.put("HSBC", HSBCAccounts);
-        walletsMap.put("Vodafone Cash", VodafoneCashAccounts);
-        walletsMap.put("Etisalat Cash", EtisalatCashAccounts);
+        walletsMap.put("VodafoneCash", VodafoneCashAccounts);
+        walletsMap.put("EtisalatCash", EtisalatCashAccounts);
     }
 }

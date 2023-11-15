@@ -6,8 +6,13 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        InstaPay app = new InstaPay();
-        app.run();
+      try {
+            InstaPay instaPay = new InstaPay();
+            instaPay.run();
+      }
+        catch (Exception e){
+            System.out.println("Something went wrong try again!");
+        }
     }
 
     /**

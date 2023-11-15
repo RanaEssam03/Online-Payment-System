@@ -43,7 +43,11 @@ public class WalletAccountView {
                 System.out.println("Please enter the amount you want to transfer: ");
                 double amount;
                 amount = in.nextDouble();
-                walletServices.transfer(amount, mobileNumber);
+                if (walletServices.transfer(amount, mobileNumber)) {
+                    System.out.println("Transfer done successfully.");
+                } else {
+                    System.out.println("you don't have enough balance.");
+                }
             } else if (choice == 2) {
                 System.out.println("Your balance is: " + walletServices.inquire());
 

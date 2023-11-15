@@ -63,6 +63,7 @@ public class BankServices extends TransactionServices  {
      */
     @Override
     public double inquire() throws IOException {
+
         return transactionProvider.getBalance(account.getMobile(), account);
     }
 }
