@@ -62,7 +62,7 @@ public class WalletAccountView {
                 System.out.println("Please enter the amount you want to transfer: ");
                 amount = in.nextDouble();
                 boolean notFound = false;
-                ArrayList<Boolean> ret = walletServices.transferToInstapayAccount(amount, username, notFound, currentAccount);
+                ArrayList<Boolean> ret = walletServices.transferToInstapayAccount(amount, username,  currentAccount);
                 if(ret.get(0) == false ){
                     System.out.println("This username is not found");
                 }

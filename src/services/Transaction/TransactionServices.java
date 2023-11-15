@@ -22,6 +22,7 @@ abstract public class TransactionServices {
 
    abstract public double inquire() throws IOException;
 
-   abstract public ArrayList<Boolean> transferToInstapayAccount(double amount, String username, Boolean notFound, Account currentAccount) throws IOException;
+
+   abstract public ArrayList<Boolean> transferToInstapayAccount(double amount, String username, Account currentAccount) throws IOException;
 
 }

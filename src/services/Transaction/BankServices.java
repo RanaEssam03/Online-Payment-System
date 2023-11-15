@@ -65,8 +65,17 @@ public class BankServices extends TransactionServices  {
         return transactionProvider.getBalance( account);
     }
 
+    /**
+     * this method is transfer money to another instapay account
+     * @param amount to be transferred
+     * @param username to be transferred to
+     * @param currentAccount the current account that will withdraw the money
+     * @return  array list of booleans to indicate if the transaction is done successfully or not -> index 1and if the user exists or not -> index0
+     *
+     * @throws IOException if the connection is not established
+     */
     @Override
-    public ArrayList<Boolean> transferToInstapayAccount(double amount, String username, Boolean notFound, Account currentAccount) throws IOException {
+    public ArrayList<Boolean> transferToInstapayAccount(double amount, String username, Account currentAccount) throws IOException {
         ArrayList<Boolean> ret  = new ArrayList<>();
         if (!userServices.verifyAccount(username)){
             ret.add(false);
