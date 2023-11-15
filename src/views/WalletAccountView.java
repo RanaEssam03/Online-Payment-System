@@ -10,8 +10,8 @@ package views;
 import models.Account.WalletAccount;
 import providers.Account.WalletProvider;
 import services.Transaction.WalletServices;
-
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WalletAccountView {
@@ -29,8 +29,9 @@ public class WalletAccountView {
             System.out.println("Please choose one of these options:-");
             System.out.println("1. Transfer to another wallet.");
             System.out.println("2. Inquire balance.");
-            System.out.println("3. Pay bills.");
-            System.out.println("4. Exit.");
+            System.out.println("3. Transfer to instapay account.");
+            System.out.println("4. Pay bills.");
+            System.out.println("5. Exit.");
             System.out.print("Choice: ");
             int choice;
             choice = in.nextInt();
@@ -52,11 +53,31 @@ public class WalletAccountView {
             } else if (choice == 2) {
                 System.out.println("Your balance is: " + walletServices.inquire());
 
-            } else if (choice == 3) {
+            }
+            else if (choice == 3){
+                System.out.println("Please enter the username of the instapay account you want to transfer to: ");
+                String username;
+                double amount;
+                username = in.next();
+                System.out.println("Please enter the amount you want to transfer: ");
+                amount = in.nextDouble();
+                boolean notFound = false;
+                ArrayList<Boolean> ret = walletServices.transferToInstapayAccount(amount, username, notFound, currentAccount);
+                if(ret.get(0) == false ){
+                    System.out.println("This username is not found");
+                }
+                else if (ret.get(1) == false){
+                    System.out.println("You don't have enough balance to transfer this amount.");
+                }
+                else{
+                    System.out.println(" You have successfully transferred " + amount + " to " + username + "");
+                }
+
+            }
+            else if (choice == 4) {
                 BillsView billsView = new BillsView(currentAccount, new WalletProvider(currentAccount.getWalletAccountType().toString()));
                 billsView.run();
             }
-
         }
     }
 }
