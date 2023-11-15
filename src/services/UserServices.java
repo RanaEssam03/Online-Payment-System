@@ -1,7 +1,9 @@
 package services;
+
 import Database.Data;
 import models.Account.Account;
 import providers.Account.AccountProvider;
+
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -14,14 +16,14 @@ public class UserServices {
     /**
      * Registers a new account with the provided details.
      *
-     * @param account the account object to be registered.
+     * @param account      the account object to be registered.
      * @param mobileNumber the mobile number associated with the account.
-     * @param provider the account provider for verification.
+     * @param provider     the account provider for verification.
      * @param providerName the name of the account provider.
      * @return true if the registration is successful, false otherwise.
      */
-    public  boolean register(Account account, String mobileNumber, AccountProvider provider, String providerName){
-        if(!provider.verifyAccount(mobileNumber, providerName)){
+    public boolean register(Account account, String mobileNumber, AccountProvider provider, String providerName) {
+        if (!provider.verifyAccount(mobileNumber, providerName)) {
             return false;
         }
         boolean valid;
@@ -34,11 +36,11 @@ public class UserServices {
         System.out.print("Username(name@instapay): ");
         Scanner in = new Scanner(System.in);
         userName = in.nextLine();
-        while(!userName.contains("@instapay")){
+        while (!userName.contains("@instapay")) {
             System.out.print("Ivalid username, please re-enter your username: ");
             userName = in.nextLine();
         }
-        while (verifyAccount(userName)){
+        while (verifyAccount(userName)) {
             System.out.print("Username already exists, please re-enter your username: ");
             userName = in.nextLine();
         }
@@ -48,9 +50,9 @@ public class UserServices {
         System.out.print("Email: ");
         email = in.nextLine();
         valid = Pattern.compile(emailRegex)
-                        .matcher(email)
-                        .matches();
-        while(!valid){
+                .matcher(email)
+                .matches();
+        while (!valid) {
             System.out.println("Invalid email format, please re-enter your email: ");
             email = in.nextLine();
             valid = Pattern.compile(emailRegex).matcher(email).matches();
@@ -70,24 +72,24 @@ public class UserServices {
                 + "(?=.*[@#$%^&+=])"
                 + "(?=\\S+$).{8,20}$";
         valid = Pattern.compile(passwordRegex).matcher(password).matches();
-        while(!valid){
+        while (!valid) {
             System.out.println("Invalid password format, please re-enter your password: ");
             password = in.nextLine();
             valid = Pattern.compile(passwordRegex).matcher(password).matches();
         }
         System.out.print("Re-enter your password: ");
         password2 = in.nextLine();
-        while(!Objects.equals(password, password2)){
+        while (!Objects.equals(password, password2)) {
             System.out.println("Passwords don't match, please re-enter your password correctly: ");
             password2 = in.nextLine();
         }
         account.setPassword(password);
         Authentication authentication = new Authentication();
-      String crntOTP =   authentication.sendOtp(mobileNumber);
+        String crntOTP = authentication.sendOtp(mobileNumber);
         System.out.print("Enter the OTP sent to your mobile number: ");
         String otp;
         otp = in.nextLine();
-        while(!Objects.equals(otp, crntOTP)){
+        while (!Objects.equals(otp, crntOTP)) {
             System.out.println("Invalid OTP, please re-enter the OTP sent to your number: ");
             otp = in.nextLine();
         }
@@ -101,11 +103,11 @@ public class UserServices {
      *
      * @param account the account of the user
      */
-    public void changePassword(Account account){
+    public void changePassword(Account account) {
         System.out.print("Enter you current password: ");
         Scanner in = new Scanner(System.in);
         String inputPassword = in.nextLine();
-        while(!Objects.equals(inputPassword, account.getPassword())){
+        while (!Objects.equals(inputPassword, account.getPassword())) {
             System.out.print("Incorrect password, please re-enter your current password: ");
             inputPassword = in.nextLine();
         }
@@ -118,7 +120,7 @@ public class UserServices {
                 + "(?=.*[@#$%^&+=])"
                 + "(?=\\S+$).{8,20}$";
         valid = Pattern.compile(passwordRegex).matcher(newPassword).matches();
-        while(!valid){
+        while (!valid) {
             System.out.println("Invalid password format, please re-enter your password: ");
             newPassword = in.nextLine();
             valid = Pattern.compile(passwordRegex).matcher(newPassword).matches();
@@ -126,7 +128,7 @@ public class UserServices {
         String newPassword2;
         System.out.print("Re-enter your password: ");
         newPassword2 = in.nextLine();
-        while(!Objects.equals(newPassword, newPassword2)){
+        while (!Objects.equals(newPassword, newPassword2)) {
             System.out.println("Passwords don't match, please re-enter your password correctly: ");
             newPassword2 = in.nextLine();
         }
@@ -134,9 +136,9 @@ public class UserServices {
         System.out.println("Password changed successfully");
     }
 
-   public boolean verifyAccount(String username){
-        for (int i = 0; i < Data.accounts.size() ; i++) {
-            if(Data.accounts.get(i).getUserName().equals(username)){
+    public boolean verifyAccount(String username) {
+        for (int i = 0; i < Data.accounts.size(); i++) {
+            if (Data.accounts.get(i).getUserName().equals(username)) {
                 return true;
             }
         }

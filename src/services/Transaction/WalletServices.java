@@ -11,6 +11,7 @@
  */
 
 package services.Transaction;
+
 import models.Account.Account;
 import providers.Account.WalletProvider;
 
@@ -27,7 +28,8 @@ public class WalletServices extends TransactionServices {
 
     /**
      * this method is used to transfer money to another user wallet from the remote server (wallet)
-     * @param amount the amount of money that will be transferred
+     *
+     * @param amount       the amount of money that will be transferred
      * @param mobileNumber the mobile number of the user that will receive the money
      * @return true if the transfer is done successfully and false if not
      * @throws IOException
@@ -45,6 +47,7 @@ public class WalletServices extends TransactionServices {
 
     /**
      * this method is used to inquire the balance of the user from the remote server (wallet)
+     *
      * @return the balance of the user from the remote server (wallet)
      * @throws IOException if the connection is not established
      */
@@ -56,11 +59,11 @@ public class WalletServices extends TransactionServices {
 
     /**
      * this method is transfer money to another instapay account
-     * @param amount to be transferred
-     * @param username to be transferred to
-     * @param currentAccount the current account that will withdraw the money
-     * @return  array list of booleans to indicate if the transaction is done successfully or not -> index 1and if the user exists or not -> index0
      *
+     * @param amount         to be transferred
+     * @param username       to be transferred to
+     * @param currentAccount the current account that will withdraw the money
+     * @return array list of booleans to indicate if the transaction is done successfully or not -> index 1and if the user exists or not -> index0
      * @throws IOException if the connection is not established
      */
     @Override

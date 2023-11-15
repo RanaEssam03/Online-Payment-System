@@ -2,11 +2,12 @@ package models.Account;
 
 import models.Account.Account;
 import models.Account.BankAccountType;
+
 /**
  * The {@code BankAccount} class represents a user's bank account with additional
  * information such as account number, bank name, and account type.
  **/
- public class BankAccount extends Account {
+public class BankAccount extends Account {
     /**
      * Getter for the account number.
      *
@@ -29,6 +30,7 @@ import models.Account.BankAccountType;
      * The account number associated with the bank account.
      */
     String AccountNumber;
+
     /**
      * Getter for the bank name.
      *
@@ -37,6 +39,7 @@ import models.Account.BankAccountType;
     public String getBankName() {
         return bankName;
     }
+
     /**
      * Setter for the bank name.
      *
@@ -74,6 +77,7 @@ import models.Account.BankAccountType;
     public BankAccount(String userName, String mobile, String password, double balance, String email) {
         super(userName, mobile, password, balance, email);
     }
+
     /**
      * Getter for the bank account type.
      *
@@ -82,6 +86,7 @@ import models.Account.BankAccountType;
     public BankAccountType getBankType() {
         return accountType;
     }
+
     /**
      * Setter for the bank type.
      *

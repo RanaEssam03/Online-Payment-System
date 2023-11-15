@@ -7,9 +7,11 @@
  * 1- run: this method is used to run the bank account view
  */
 package views;
+
 import models.Account.WalletAccount;
 import providers.Account.WalletProvider;
 import services.Transaction.WalletServices;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -17,10 +19,12 @@ import java.util.Scanner;
 public class WalletAccountView {
 
     WalletAccount currentAccount;
-    public WalletAccountView(WalletAccount currentAccount){
+
+    public WalletAccountView(WalletAccount currentAccount) {
         this.currentAccount = currentAccount;
     }
-    public  void run() throws IOException {
+
+    public void run() throws IOException {
 
         WalletServices walletServices = new WalletServices(currentAccount.getWalletAccountType().toString(), currentAccount);
         Scanner in = new Scanner(System.in);
@@ -53,8 +57,7 @@ public class WalletAccountView {
             } else if (choice == 2) {
                 System.out.println("Your balance is: " + walletServices.inquire());
 
-            }
-            else if (choice == 3){
+            } else if (choice == 3) {
                 System.out.println("Please enter the username of the instapay account you want to transfer to: ");
                 String username;
                 double amount;
@@ -62,19 +65,16 @@ public class WalletAccountView {
                 System.out.println("Please enter the amount you want to transfer: ");
                 amount = in.nextDouble();
                 boolean notFound = false;
-                ArrayList<Boolean> ret = walletServices.transferToInstapayAccount(amount, username,  currentAccount);
-                if(ret.get(0) == false ){
+                ArrayList<Boolean> ret = walletServices.transferToInstapayAccount(amount, username, currentAccount);
+                if (ret.get(0) == false) {
                     System.out.println("This username is not found");
-                }
-                else if (ret.get(1) == false){
+                } else if (ret.get(1) == false) {
                     System.out.println("You don't have enough balance to transfer this amount.");
-                }
-                else{
+                } else {
                     System.out.println(" You have successfully transferred " + amount + " to " + username + "");
                 }
 
-            }
-            else if (choice == 4) {
+            } else if (choice == 4) {
                 BillsView billsView = new BillsView(currentAccount, new WalletProvider(currentAccount.getWalletAccountType().toString()));
                 billsView.run();
             }

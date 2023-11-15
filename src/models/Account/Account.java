@@ -9,7 +9,6 @@ import java.util.List;
 public class Account {
 
 
-
     private String mobile;
     String email;
     private String userName;
@@ -29,10 +28,10 @@ public class Account {
      * Parameterized constructor for the {@code Account} class.
      *
      * @param userName the username of the account
-     * @param mobile the mobile number associated with the account
+     * @param mobile   the mobile number associated with the account
      * @param password the password for the account
-     * @param balance the initial balance of the account
-     * @param email the email associated with the account
+     * @param balance  the initial balance of the account
+     * @param email    the email associated with the account
      */
     public Account(String userName, String mobile, String password, double balance, String email) {
         this.userName = userName;

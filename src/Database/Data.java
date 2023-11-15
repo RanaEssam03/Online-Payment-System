@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- The Data class represents the database that stores various types of accounts.
- It includes bank accounts and wallet accounts along with associated information.
+ * The Data class represents the database that stores various types of accounts.
+ * It includes bank accounts and wallet accounts along with associated information.
  */
 
 public class Data {
@@ -33,25 +33,25 @@ public class Data {
      * Key: mobile number
      * Value: String array with index 0 as bankNumber, index 1 as balance, index 2 as accountType (saving or checking)
      */
-    public static Map<String, String[]>  CIBAccounts = new HashMap<>();
+    public static Map<String, String[]> CIBAccounts = new HashMap<>();
 
     /**
-      *The map that stores National Bank accounts.
-      */
+     * The map that stores National Bank accounts.
+     */
     public static Map<String, String[]> NationalBankAccounts = new HashMap<>();
 
     /**
-     *The map that stores HSBC Bank accounts.
+     * The map that stores HSBC Bank accounts.
      */
     public static Map<String, String[]> HSBCAccounts = new HashMap<>();
 
     /**
-     *The map that stores Etisalat Cash Wallet accounts.
+     * The map that stores Etisalat Cash Wallet accounts.
      */
     public static Map<String, Double> EtisalatCashAccounts = new HashMap<>();
 
     /**
-     *The map that stores Vodafone Cash Wallet accounts.
+     * The map that stores Vodafone Cash Wallet accounts.
      */
     public static Map<String, Double> VodafoneCashAccounts = new HashMap<>();
 
@@ -73,7 +73,7 @@ public class Data {
     /**
      * Sets up the initial set of accounts in the database.
      */
-    public static void setCurrentAccounts(){
+    public static void setCurrentAccounts() {
         String userName, mobile, email, password;
         String accountNumber;
         double balance;
@@ -89,7 +89,7 @@ public class Data {
         account.setBankName("CIB");
         String tempBalance;
         tempBalance = Double.toString(balance);
-        CIBAccounts.put(mobile, new String[]{accountNumber, tempBalance,account.getAccountType().toString()});
+        CIBAccounts.put(mobile, new String[]{accountNumber, tempBalance, account.getAccountType().toString()});
         accounts.add(account);
         bankAccounts.add(account);
         userName = "noor@instapay";

@@ -8,15 +8,20 @@
  * 2- authenticate: this method is used to authenticate the user and register him
  */
 package views;
+
 import models.*;
 import models.Account.*;
 import providers.Account.AccountProvider;
 import providers.Account.BankProvider;
 import providers.Account.WalletProvider;
 import services.Authentication;
+
 import java.io.IOException;
+
 import services.UserServices;
+
 import java.util.Scanner;
+
 import static Database.Data.*;
 import static java.lang.System.exit;
 
@@ -27,9 +32,10 @@ public class InstaPay {
 
     /**
      * this method is used to authenticate the user and register him  it will return the account that the user logged in with
+     *
      * @return the account that the user logged in with
      */
-     Account authenticate() throws IOException {
+    Account authenticate() throws IOException {
         Account loggedInAccount;
         System.out.println("Please choose one of these options:-");
         System.out.println("1. Register using bank account.");
@@ -69,7 +75,7 @@ public class InstaPay {
                     mobileNumber = input.nextLine();
                 }
                 bankAccount.setBankName(banks[c - 1]);
-                bankAccount.setBalance(bankAccountProvider.getBalance( bankAccount));
+                bankAccount.setBalance(bankAccountProvider.getBalance(bankAccount));
                 bankAccount.setAccountNumber(bankAccountProvider.getAccountNumber(mobileNumber, banks[c - 1]));
                 accounts.add(bankAccount);
                 bankAccounts.add(bankAccount);
@@ -80,8 +86,7 @@ public class InstaPay {
                 loggedInAccount = bankAccount;
                 return loggedInAccount;
             }
-            case 2:
-            {
+            case 2: {
                 Scanner in2 = new Scanner(System.in);
                 Scanner input2 = new Scanner(System.in);
                 String[] wallets = {"VodafoneCash", "EtisalatCash"};
@@ -91,22 +96,21 @@ public class InstaPay {
                 System.out.print("Choice: ");
                 int b;
                 b = in2.nextInt();
-                if(b - 1 >= wallets.length){
+                if (b - 1 >= wallets.length) {
                     System.out.println("Invalid wallet choice, please re-enter your choice: ");
                     b = in.nextInt();
                 }
-                WalletAccount walletAccount= new WalletAccount();
+                WalletAccount walletAccount = new WalletAccount();
                 WalletProvider walletProvider = new WalletProvider(wallets[b - 1]);
-                if(b == 1) {
+                if (b == 1) {
                     walletAccount.setWalletAccountType(WalletAccountType.VodafoneCash);
-                }
-                else{
+                } else {
                     walletAccount.setWalletAccountType(WalletAccountType.EtisalatCash);
                 }
                 System.out.print("Please enter the attached mobile number to your wallet account: ");
                 String mobile_number;
                 mobile_number = input2.nextLine();
-                while(!userServices.register(walletAccount, mobile_number, walletProvider, wallets[b - 1])){
+                while (!userServices.register(walletAccount, mobile_number, walletProvider, wallets[b - 1])) {
                     System.out.print("This mobile number has no wallet, please re-enter your mobile number: ");
                     mobile_number = input2.nextLine();
                 }
@@ -115,7 +119,7 @@ public class InstaPay {
                 walletAccounts.add(walletAccount);
                 currentAccountType = AccountType.WalletAccount;
                 System.out.print("\n");
-                System.out.println(walletAccount.getUserName() + "                 " + walletAccount.getBalance() +  "                 " +  walletAccount.getWalletAccountType().toString());
+                System.out.println(walletAccount.getUserName() + "                 " + walletAccount.getBalance() + "                 " + walletAccount.getWalletAccountType().toString());
                 System.out.print("\n");
                 loggedInAccount = walletAccount;
                 return loggedInAccount;
@@ -146,27 +150,27 @@ public class InstaPay {
 
     /**
      * this method is used to run the program
+     *
      * @throws IOException if the connection is not established
      */
-    public void run () throws IOException {
+    public void run() throws IOException {
         setCurrentAccounts();
-      while (true){
-          System.out.println("\n_______________________________________________________________________");
-          System.out.println("Welcome to our online payment system");
-          Account loggedInAccount;
-          loggedInAccount = authenticate();
-          if(loggedInAccount == null){
-              return;
-          }
-          if(loggedInAccount instanceof BankAccount){
-              BankAccountView bankView = new BankAccountView((BankAccount) loggedInAccount);
-              bankView.run();
-          }
-          else if(loggedInAccount instanceof WalletAccount){
-              WalletAccountView walletView = new WalletAccountView((WalletAccount) loggedInAccount);
-              walletView.run();
-          }
-      }
+        while (true) {
+            System.out.println("\n_______________________________________________________________________");
+            System.out.println("Welcome to our online payment system");
+            Account loggedInAccount;
+            loggedInAccount = authenticate();
+            if (loggedInAccount == null) {
+                return;
+            }
+            if (loggedInAccount instanceof BankAccount) {
+                BankAccountView bankView = new BankAccountView((BankAccount) loggedInAccount);
+                bankView.run();
+            } else if (loggedInAccount instanceof WalletAccount) {
+                WalletAccountView walletView = new WalletAccountView((WalletAccount) loggedInAccount);
+                walletView.run();
+            }
+        }
     }
 
 }

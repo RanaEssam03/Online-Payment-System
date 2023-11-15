@@ -10,8 +10,10 @@
  * 5- transferToWallet: this method is used to transfer money to another user wallet from the remote server
  */
 package providers.Account;
+
 import Database.Data;
 import models.Account.Account;
+
 import java.io.IOException;
 
 import static Database.Data.walletsMap;
@@ -20,6 +22,7 @@ public class WalletProvider extends AccountProvider {
 
     /**
      * this constructor is used to initialize the connection with the remote server
+     *
      * @param name the name of the remote server
      */
     public WalletProvider(String name) {
@@ -32,23 +35,22 @@ public class WalletProvider extends AccountProvider {
     }
 
     /**
-     *
      * @param currentAccount the current account that will inquire the balance
      * @return the balance of the user from the remote server (bank)
      * @throws IOException if the connection is not established
      */
     @Override
-    public double getBalance( Account currentAccount) throws IOException {
+    public double getBalance(Account currentAccount) throws IOException {
         System.out.println("Get balance from wallet using " + connection.getApiURL());
-     return Data.walletsMap.get(connection.getName()).get(currentAccount.getMobile());
-
+        return Data.walletsMap.get(connection.getName()).get(currentAccount.getMobile());
 
 
     }
 
     /**
      * this method is used to withdraw money from the user account from the remote server
-     * @param amount the amount of money that will be withdrawn
+     *
+     * @param amount         the amount of money that will be withdrawn
      * @param currentAccount the current account that will withdraw the money
      * @return true if the withdraw is done successfully, false otherwise
      */
@@ -67,8 +69,9 @@ public class WalletProvider extends AccountProvider {
 
     /**
      * this method is used to transfer money to another user account from the remote server
-     * @param amount the amount of money that will be transferred
-     * @param mobileNumber the mobile number of the user that will receive the money
+     *
+     * @param amount         the amount of money that will be transferred
+     * @param mobileNumber   the mobile number of the user that will receive the money
      * @param currentAccount the current account that will transfer the money
      * @return true if the transfer is done successfully, false otherwise
      * @throws IOException if the connection is not established

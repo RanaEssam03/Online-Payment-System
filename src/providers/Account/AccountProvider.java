@@ -10,6 +10,7 @@
  * 4- withdraw: this method is used to withdraw money from the user account from the remote server
  */
 package providers.Account;
+
 import models.Account.Account;
 import models.ConnectionAPI;
 
@@ -17,16 +18,18 @@ import java.io.IOException;
 
 abstract public class AccountProvider {
     ConnectionAPI connection;
+
     /**
      * this method is used to verify the presence of this bank account using the mobile number from the remote server
      *
      * @param mobileNumber the mobile number of the user
-     * @param provider the provider's name
+     * @param provider     the provider's name
      */
     abstract public boolean verifyAccount(String mobileNumber, String provider);
 
     /**
      * this constructor is used to initialize the connection with the remote server
+     *
      * @param name the name of the remote server
      */
     public AccountProvider(String name) {
@@ -43,6 +46,7 @@ abstract public class AccountProvider {
 
     /**
      * this method is used to withdraw money from the user account from the remote server
+     *
      * @param amount
      * @return
      */
@@ -50,13 +54,13 @@ abstract public class AccountProvider {
 
     /**
      * this method is used to transfer money to another user account from the remote server
+     *
      * @param amount
      * @param mobileNumber
      * @return
      * @throws IOException
      */
     public abstract boolean transferToWallet(double amount, String mobileNumber, Account currentAccount) throws IOException;
-
 
 
 }

@@ -31,7 +31,7 @@ public class Authentication {
      */
 
     public Account login(String name, String password) {
-       for (Account account : accounts) {
+        for (Account account : accounts) {
             if (account.getUserName().equals(name) && account.getPassword().equals(password)) {
                 return account; // Login successful, return the account
             }
@@ -69,7 +69,7 @@ public class Authentication {
      *
      * @param mobileNumber The email address to which the OTP will be sent.
      */
-    public String sendOtp(String mobileNumber){
+    public String sendOtp(String mobileNumber) {
         String generatedOtp = generateRandomOtp();
         System.out.println("OTP sent to " + mobileNumber + ": " + generatedOtp);
         return generatedOtp;

@@ -8,6 +8,7 @@ import providers.BillPayment.ElectricityCompany;
 import providers.BillPayment.GasCompany;
 import providers.BillPayment.WaterCompany;
 import services.BillServices;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class BillsView {
     }
 
 
-    public void run(){
+    public void run() {
         System.out.println("Please choose one of these options:-");
         System.out.println("1. Gas.");
         System.out.println("2. Electricity.");

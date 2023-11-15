@@ -6,11 +6,10 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-      try {
+        try {
             InstaPay instaPay = new InstaPay();
             instaPay.run();
-      }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Something went wrong try again!");
         }
     }
@@ -21,10 +20,10 @@ public class Main {
 /// Registered accounts
 
     /**
-    Registered account using CIB Bank Account
-    username : nour@instapay
-    password: Software2023$
-    ***/
+     Registered account using CIB Bank Account
+     username : nour@instapay
+     password: Software2023$
+     ***/
 
     /**
      Registered account using National Bank of Egypt Account
@@ -65,7 +64,7 @@ public class Main {
      */
 
     /**
-      To register using wallet use this mobile number 01122334455
+     To register using wallet use this mobile number 01122334455
      in Etisalat Online Wallet to make sure that it will be verified
      */
 
