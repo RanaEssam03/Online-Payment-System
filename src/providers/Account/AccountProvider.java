@@ -19,6 +19,13 @@ import static Database.Data.banksMap;
 
 abstract public class AccountProvider {
     ConnectionAPI connection;
+    /**
+     * this method is used to verify the presence of this bank account using the mobile number from the remote server
+     *
+     * @param mobileNumber the mobile number of the user
+     * @param provider the provider's name
+     */
+    abstract public boolean verifyAccount(String mobileNumber, String provider);
 
     /**
      * this constructor is used to initialize the connection with the remote server

@@ -22,6 +22,21 @@ import static Database.Data.banksMap;
 
 public class BankProvider extends AccountProvider {
 
+    @Override
+    public boolean verifyAccount(String mobileNumber, String provider) {
+        return banksMap.get(provider).containsKey(mobileNumber);
+    }
+
+    /**
+     * this method is used to get the account number of this bank account using the mobile number from the remote server
+     *
+     * @param mobileNumber the mobile number of the user
+     * @param provider the provider's name
+     */
+    public String getAccountNumber(String mobileNumber, String provider) {
+        return banksMap.get(provider).get(mobileNumber)[0];
+    }
+
     /**
      * this constructor is used to initialize the connection with the remote server
      * @param name the name of the remote server
@@ -35,7 +50,7 @@ public class BankProvider extends AccountProvider {
         System.out.println("Get balance from wallet using " + connection.getApiURL());
         System.out.println();
         String currentBank = connection.getName();
-        return Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[0]); // here we get the balance of my demo database which represents the bank server in the real world
+        return Double.parseDouble( Data.banksMap.get(currentBank).get(currentAccount.getMobile())[1]); // here we get the balance of my demo database which represents the bank server in the real world
     }
 
     @Override
