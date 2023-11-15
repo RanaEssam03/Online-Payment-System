@@ -22,9 +22,10 @@ public  class BillServices {
         return billCompany.getBill(customerID);
     }
     public boolean pay(Bill bill, Account currentAccount){
-       if(transactionProvider.withdraw(bill.getBillAmount(), currentAccount))
+       if(transactionProvider.withdraw(bill.getBillAmount(), currentAccount)) {
+           currentAccount.setBalance(currentAccount.getBalance() - bill.getBillAmount());
            return billCompany.confirmPayment();
-
+       }
         return false;
     }
 }

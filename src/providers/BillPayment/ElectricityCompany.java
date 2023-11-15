@@ -13,14 +13,13 @@ public class ElectricityCompany extends BillCompany {
     }
     public Bill getBill(Integer customerID) {
         Random random = new Random();
-        Double unitPrice = random.nextDouble(1000);
+        Double unitPrice = random.nextDouble(2);
         Double usedAmount = random.nextDouble(1000);
         ElectricityBill electricityBill = new ElectricityBill(customerID, unitPrice, usedAmount);
         return electricityBill;
     }
 
     public boolean confirmPayment() {
-        // TODO : could be concrete method in BillCompany??
         System.out.println("Electricity bill payment confirmed using " + connectionAPI.getApiURL());
         return true;
     }

@@ -20,7 +20,7 @@ public class GasCompany extends BillCompany {
     }
 
     public boolean confirmPayment() {
-        // TODO : could be concrete method in BillCompany??
+
         System.out.println("Gas bill payment confirmed using " + connectionAPI.getApiURL());
         return true;
     }

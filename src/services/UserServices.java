@@ -1,13 +1,27 @@
 package services;
+import Database.Data;
 import models.Account.Account;
-import providers.verification.Verification;
+import providers.Account.AccountProvider;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * The UserServices class provides a general method for user registration and account creation and feature of changing password
+ */
+
 public class UserServices {
-    public  boolean register(Account account, String mobileNumber, Verification verifier, String verifierName){
-        if(!verifier.verifyAccount(mobileNumber, verifierName)){
+    /**
+     * Registers a new account with the provided details.
+     *
+     * @param account the account object to be registered.
+     * @param mobileNumber the mobile number associated with the account.
+     * @param provider the account provider for verification.
+     * @param providerName the name of the account provider.
+     * @return true if the registration is successful, false otherwise.
+     */
+    public  boolean register(Account account, String mobileNumber, AccountProvider provider, String providerName){
+        if(!provider.verifyAccount(mobileNumber, providerName)){
             return false;
         }
         boolean valid;
@@ -25,7 +39,6 @@ public class UserServices {
             userName = in.nextLine();
         }
         account.setUserName(userName);
-        System.out.print("\n");
         String emailRegex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         System.out.print("Email: ");
@@ -39,8 +52,7 @@ public class UserServices {
             valid = Pattern.compile(emailRegex).matcher(email).matches();
         }
         account.setEmail(email);
-        System.out.print("\n"); //Needed just for memorizing password rules when testing
-        System.out.println("Please enter your passwords satisfying the following constraints:-");
+        System.out.println("Please enter your password satisfying the following constraints:-");
         System.out.println("1. It contains at least 8 characters and at most 20 characters.");
         System.out.println("2. It contains at least one digit.");
         System.out.println("3. It contains at least one upper case alphabet.");
@@ -69,10 +81,51 @@ public class UserServices {
         System.out.println("Account created successfully");
         return true;
     }
-    public  void changePassword(){
-    }
-    boolean  verifyOTP(){
-        return false;
+
+    /**
+     * Gives the logged-in user the ability to change his password
+     *
+     * @param account the account of the user
+     */
+    public void changePassword(Account account){
+        System.out.print("Enter you current password: ");
+        Scanner in = new Scanner(System.in);
+        String inputPassword = in.nextLine();
+        while(!Objects.equals(inputPassword, account.getPassword())){
+            System.out.print("Incorrect password, please re-enter your current password: ");
+            inputPassword = in.nextLine();
+        }
+        String newPassword;
+        System.out.print("Enter your new password: ");
+        newPassword = in.nextLine();
+        boolean valid;
+        String passwordRegex = "^(?=.*[0-9])"
+                + "(?=.*[a-z])(?=.*[A-Z])"
+                + "(?=.*[@#$%^&+=])"
+                + "(?=\\S+$).{8,20}$";
+        valid = Pattern.compile(passwordRegex).matcher(newPassword).matches();
+        while(!valid){
+            System.out.println("Invalid password format, please re-enter your password: ");
+            newPassword = in.nextLine();
+            valid = Pattern.compile(passwordRegex).matcher(newPassword).matches();
+        }
+        String newPassword2;
+        System.out.print("Re-enter your password: ");
+        newPassword2 = in.nextLine();
+        while(!Objects.equals(newPassword, newPassword2)){
+            System.out.println("Passwords don't match, please re-enter your password correctly: ");
+            newPassword2 = in.nextLine();
+        }
+        account.setPassword(newPassword);
+        System.out.println("Password changed successfully");
     }
 
+   public boolean verifyAccount(String username){
+        for (int i = 0; i < Data.accounts.size() ; i++) {
+            if(Data.accounts.get(i).getUserName().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

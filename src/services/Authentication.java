@@ -31,7 +31,7 @@ public class Authentication {
      */
 
     public Account login(String name, String password) {
-        for (Account account : accounts) {
+       for (Account account : accounts) {
             if (account.getUserName().equals(name) && account.getPassword().equals(password)) {
                 return account; // Login successful, return the account
             }
