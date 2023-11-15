@@ -11,24 +11,48 @@ public class Main {
     }
 
     /**
-    Registered account using CIB Bank account
-    username : nourmuhammad@instapay
+    Registered account using CIB Bank Account
+    username : nour@instapay
     password: Software2023$
     ***/
 
     /**
-     Registered account using vodafone cash wallet
-     username: ranaessam@instapay
+     Registered account using National Bank of Egypt Account
+     username : noor@instapay
      password: Software2023$
      ***/
 
     /**
-     To register using bank account use this mobile number 01114335538
-     in CIB bank to make sure that it will be verified
-     */
+     Registered account using HSBC Bank Account
+     username : mariam@instapay
+     password: Software2023$
+     ***/
+
     /**
-      To register using wallet use this mobile number 01007104077
-     in Etisalat online wallet to make sure that it will be verified
+     Registered account using Vodafone Cash Wallet
+     username: rana@instapay
+     password: Software2023$
+     ***/
+
+    /**
+     Registered account using Etisalat Cash Wallet
+     username: merna@instapay
+     password: Software2023$
+     ***/
+
+    /**
+     To register using bank account use this mobile number 01122334455
+     in any bank option you choose to make sure that it will be verified
+     */
+
+    /**
+     To register using wallet use this mobile number 01032750535
+     in Vodafone Cash Online Wallet to make sure that it will be verified
+     */
+
+    /**
+      To register using wallet use this mobile number 01122334455
+     in Etisalat Online Wallet to make sure that it will be verified
      */
 
 

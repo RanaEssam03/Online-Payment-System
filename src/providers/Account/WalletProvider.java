@@ -13,6 +13,8 @@ package providers.Account;
 import models.Account.Account;
 import java.io.IOException;
 
+import static Database.Data.walletsMap;
+
 public class WalletProvider extends AccountProvider {
 
     /**
@@ -21,6 +23,11 @@ public class WalletProvider extends AccountProvider {
      */
     public WalletProvider(String name) {
         super(name);
+    }
+
+    @Override
+    public boolean verifyAccount(String mobileNumber, String provider) {
+        return walletsMap.get(provider).containsKey(mobileNumber);
     }
 
     /**
