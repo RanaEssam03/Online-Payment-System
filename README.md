@@ -19,7 +19,7 @@ SOLID principles and design patterns were utilized in this project.
 ## Team Members
 - [Rana Essam](ranaessam03@gmail.com)
 - [Noor Eyad](nooreyadd39@gmail.com)
-- [Nour Mohamed](nourmuhammad835@gamil.com)
+- [Nour Muhammad](nourmuhammad835@gamil.com)
 - [Mariam Haitham](haithammariam36@gmail.com)
 
 
