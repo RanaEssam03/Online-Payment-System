@@ -27,7 +27,7 @@ public class WaterCompany extends BillCompany {
      * @return the randomly generated water bill
      */
     public Bill getBill(Integer customerID) {
-        // TODO : customerID problem
+
         Random random = new Random();
         Double unitPrice = 6.5;
         Double usedAmount = 200.5;
@@ -41,7 +41,7 @@ public class WaterCompany extends BillCompany {
      * @return {@code true} if the payment is confirmed, {@code false} otherwise
      */
     public boolean confirmPayment() {
-        // TODO : could be concrete method in BillCompany??
+
         System.out.println("Gas bill payment confirmed using " + connectionAPI.getApiURL());
         return true;
     }
